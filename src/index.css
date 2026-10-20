@@ -1,0 +1,493 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #28A71A;
+  --color-primary-dark: #1C7712;
+  --color-primary-light: #6FC466;
+  --color-primary-bg: #EAF6E8;
+  --color-primary-badge: #E6F9F0;
+  --color-secondary: #EFB100;
+  --color-text-dark: #303030;
+  --color-text-gray: #555555;
+  --color-text-muted: #767676;
+  --color-text-black: #000000;
+  --color-bg-main: #FAFAFA;
+  --color-border-light: rgba(0, 0, 0, 0.1);
+  --color-success-teal: #00C16A;
+  --color-badge-text: #006844;
+  --color-blue-bg: #EAF2FF;
+  --color-blue-primary: #2B7FFF;
+  --color-gray-light: #F0F4F8;
+  --color-gray-border: #D4D4D4;
+  --color-white: #FFFFFF;
+  --color-footer-bg: #000000;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    color: var(--color-text-dark);
+  }
+
+
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .section-padding {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  .content-width {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ---- Typography ---- */
+  .text-display-xl {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .text-display-lg {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .text-display-md {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .text-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-text-gray);
+  }
+
+  .text-body-sm {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text-gray);
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #28A71A;
+    color: #FFFFFF;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary-green:hover {
+    background-color: #1C7712;
+  }
+
+  .btn-outline-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #28A71A;
+    color: #28A71A;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-green:hover {
+    background-color: #28A71A;
+    color: #FFFFFF;
+  }
+
+  /* ---- Badges ---- */
+  .badge-green {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 16px;
+    gap: 4px;
+    background: #E6F9F0;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #006844;
+  }
+
+  .badge-xs {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 4px;
+    background: #EAF6E8;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    color: #1C7712;
+  }
+
+  .badge-sm {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 12px;
+    gap: 4px;
+    background: #F0F4F8;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #444444;
+  }
+
+  .badge-musholla {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    gap: 4px;
+    background: #EAF2FF;
+    border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    color: #1A5CC4;
+  }
+
+  /* ---- Cards ---- */
+  .card-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    background: #FFFFFF;
+  }
+
+  .card-border-sm {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #FFFFFF;
+  }
+
+  .info-card-green {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 16px;
+    background: #EAF6E8;
+    border-radius: 16px;
+  }
+
+  .info-card-white {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  .masjid-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .publication-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  .testimoni-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  .quick-access-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  /* ---- Icons ---- */
+  .icon-boxed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 44px;
+    height: 44px;
+    background: #28A71A;
+    border-radius: 99px;
+    flex-shrink: 0;
+  }
+
+  .icon-boxed-outline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 44px;
+    height: 44px;
+    background: #EAF6E8;
+    border: 1px solid #F0F4F8;
+    border-radius: 99px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Hero Sections ---- */
+  .hero-section {
+    padding: 140px 120px 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-section h1 {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: #303030;
+    margin-bottom: 16px;
+  }
+
+  .hero-section p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #555555;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 100px 16px 40px;
+    }
+    .hero-section h1 {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  /* ---- Effects ---- */
+  .text-gradient-green {
+    background: linear-gradient(90deg, #1C7712 0%, #6FC466 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-green::selection {
+    -webkit-text-fill-color: #303030;
+  }
+
+  /* Consistent Page Title */
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: #303030;
+  }
+
+  .page-title .highlight {
+    background: linear-gradient(90deg, #1C7712 0%, #6FC466 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  /* Section Header Title */
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -0.02em;
+    color: #303030;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Page Section spacing */
+  .page-section {
+    padding: 60px 120px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .page-section {
+      padding: 40px 16px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .page-section {
+      padding: 40px 32px;
+    }
+  }
+
+  .page-section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* ---- Keyframes ---- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
