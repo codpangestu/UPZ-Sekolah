@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ArrowLeft, MapPin, Phone, Mail, Users, Loader2, AlertCircle, Building2, Calendar } from 'lucide-react';
+import { ArrowLeft, MapPin, Phone, Mail, Loader2, AlertCircle, GraduationCap, Calendar, Award } from 'lucide-react';
 import { masjidService } from '../services/masjidService';
 
 /** Shape response GET /api/v1/masjid/{slug} (Content Service 8003). */
@@ -20,7 +20,7 @@ interface PublikMasjidDetail {
 }
 
 export default function MasjidDetailPage() {
-  const { id } = useParams<{ id: string }>(); // id = slug masjid
+  const { id } = useParams<{ id: string }>();
   const [masjid, setMasjid] = useState<PublikMasjidDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -41,8 +41,6 @@ export default function MasjidDetailPage() {
       .getMasjidBySlug(id)
       .then((res) => {
         if (cancelled) return;
-        // 404 backend mengirim status_code="404" dengan data null — ApiResponse
-        // type frontend tidak punya status_code, jadi cukup cek data-nya.
         if (!res?.data) {
           setNotFound(true);
         } else {
@@ -66,11 +64,11 @@ export default function MasjidDetailPage() {
 
   if (loading) {
     return (
-      <div className="bg-[#FAFAFA] min-h-screen flex items-center justify-center">
+      <div className="bg-[#F8FAFC] min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 size={32} className="animate-spin text-[#28A71A]" />
-          <span className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Memuat profil masjid...
+          <Loader2 size={32} className="animate-spin text-sky-600" />
+          <span className="text-sm text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Memuat profil UPZ Sekolah...
           </span>
         </div>
       </div>
@@ -79,12 +77,12 @@ export default function MasjidDetailPage() {
 
   if (error) {
     return (
-      <div className="bg-[#FAFAFA] min-h-screen flex items-center justify-center">
+      <div className="bg-[#F8FAFC] min-h-screen flex items-center justify-center">
         <div className="text-center px-6">
-          <AlertCircle size={48} className="text-[#EF4444] mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-[#303030] mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Terjadi Kesalahan</h2>
-          <p className="text-sm text-[#555] mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Gagal memuat profil masjid. Coba muat ulang halaman.</p>
-          <Link to="/masjid" className="btn-primary-green">Kembali ke Daftar Masjid</Link>
+          <AlertCircle size={48} className="text-rose-500 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-slate-800 mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Terjadi Kesalahan</h2>
+          <p className="text-sm text-slate-500 mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Gagal memuat profil UPZ Sekolah. Silakan muat ulang halaman.</p>
+          <Link to="/masjid" className="btn-primary-blue">Kembali ke Direktori UPZ Sekolah</Link>
         </div>
       </div>
     );
@@ -92,58 +90,57 @@ export default function MasjidDetailPage() {
 
   if (notFound || !masjid) {
     return (
-      <div className="bg-[#FAFAFA] min-h-screen flex items-center justify-center">
+      <div className="bg-[#F8FAFC] min-h-screen flex items-center justify-center">
         <div className="text-center px-6">
-          <div className="text-6xl mb-4">🔍</div>
-          <h2 className="text-xl font-semibold text-[#303030] mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Masjid Tidak Ditemukan</h2>
-          <p className="text-sm text-[#555] mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Masjid yang Anda cari tidak tersedia.</p>
-          <Link to="/masjid" className="btn-primary-green">Kembali ke Daftar Masjid</Link>
+          <div className="text-6xl mb-4">🏫</div>
+          <h2 className="text-xl font-bold text-slate-800 mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>UPZ Sekolah Tidak Ditemukan</h2>
+          <p className="text-sm text-slate-500 mb-6" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Data UPZ Sekolah yang Anda cari belum terdaftar atau tidak aktif.</p>
+          <Link to="/masjid" className="btn-primary-blue">Kembali ke Direktori UPZ Sekolah</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-[#FAFAFA] min-h-screen">
-      <div className="page-section">
+    <div className="bg-[#F8FAFC] min-h-screen">
+      <div className="page-section py-8">
         <div className="page-section-inner max-w-4xl">
           {/* Back Button */}
           <Link
             to="/masjid"
-            className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#28A71A] transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-sky-600 transition-colors mb-6"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <ArrowLeft size={16} />
-            Kembali ke Daftar Masjid
+            Kembali ke Direktori UPZ Sekolah
           </Link>
 
           {/* Header Card */}
-          <div className="bg-white border border-[rgba(0,0,0,0.1)] rounded-2xl overflow-hidden mb-6 card-hover">
-            <div className="h-64 bg-gradient-to-br from-[#E6F9F0] to-[#EAF6E8] flex items-center justify-center relative">
-              <span className="text-8xl">🕌</span>
-              {masjid.jenis_masjid && (
-                <span
-                  className={`absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wide ${
-                    masjid.jenis_masjid === 'Musholla' ? 'bg-[#FF8C00]/90 text-white' : 'bg-[#28A71A]/90 text-white'
-                  }`}
-                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  {masjid.jenis_masjid}
-                </span>
-              )}
+          <div className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden mb-6 shadow-sm">
+            <div className="h-64 bg-gradient-to-br from-sky-50 via-sky-100/60 to-sky-50 flex items-center justify-center relative">
+              <span className="text-8xl">🏫</span>
+              <span
+                className="absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-xl uppercase tracking-wide bg-sky-600 text-white shadow-sm"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              >
+                {masjid.jenis_masjid || 'UPZ Sekolah BAZNAS'}
+              </span>
             </div>
             <div className="p-6 md:p-8">
-              <h1 className="text-2xl md:text-3xl font-semibold text-[#303030] mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                {masjid.nama_masjid || 'Tanpa Nama'}
+              <div className="flex items-center gap-2 mb-2">
+                <span className="badge-xs">Binaan BAZNAS</span>
+              </div>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                {masjid.nama_masjid || 'UPZ Sekolah'}
               </h1>
               {masjid.alamat_masjid && (
-                <div className="flex items-start gap-2 text-sm text-[#555] mb-4">
-                  <MapPin size={16} className="text-[#28A71A] mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-2 text-sm text-slate-500 mb-4">
+                  <MapPin size={16} className="text-sky-600 mt-0.5 flex-shrink-0" />
                   <span>{masjid.alamat_masjid}</span>
                 </div>
               )}
               {stripHtml(masjid.deskripsi) && (
-                <p className="text-base text-[#303030] leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <p className="text-sm text-slate-600 leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   {stripHtml(masjid.deskripsi)}
                 </p>
               )}
@@ -152,104 +149,106 @@ export default function MasjidDetailPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Informasi Kontak */}
-            <div className="bg-white border border-[rgba(0,0,0,0.1)] rounded-2xl p-6">
-              <div className="badge-green mb-4 w-fit">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+              <div className="badge-blue mb-4 w-fit">
                 <MapPin size={14} />
-                <span>Informasi Kontak</span>
+                <span>Informasi Kontak Sekolah</span>
               </div>
               <div className="space-y-4">
                 {masjid.alamat_masjid ? (
                   <div className="flex items-start gap-3">
-                    <MapPin size={16} className="text-[#28A71A] mt-0.5 flex-shrink-0" />
+                    <MapPin size={16} className="text-sky-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Alamat</p>
-                      <p className="text-sm text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.alamat_masjid}</p>
+                      <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Alamat Lengkap</p>
+                      <p className="text-sm text-slate-700 font-medium mt-0.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.alamat_masjid}</p>
                     </div>
                   </div>
                 ) : null}
                 {masjid.nohp_masjid ? (
                   <div className="flex items-start gap-3">
-                    <Phone size={16} className="text-[#28A71A] mt-0.5 flex-shrink-0" />
+                    <Phone size={16} className="text-sky-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Telepon</p>
-                      <p className="text-sm text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.nohp_masjid}</p>
+                      <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>No. Telepon / WhatsApp</p>
+                      <p className="text-sm text-slate-700 font-medium mt-0.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.nohp_masjid}</p>
                     </div>
                   </div>
                 ) : null}
                 {masjid.email_masjid ? (
                   <div className="flex items-start gap-3">
-                    <Mail size={16} className="text-[#28A71A] mt-0.5 flex-shrink-0" />
+                    <Mail size={16} className="text-sky-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Email</p>
-                      <p className="text-sm text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.email_masjid}</p>
+                      <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Alamat Email</p>
+                      <p className="text-sm text-slate-700 font-medium mt-0.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{masjid.email_masjid}</p>
                     </div>
                   </div>
                 ) : null}
                 {!masjid.alamat_masjid && !masjid.nohp_masjid && !masjid.email_masjid && (
-                  <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                    Informasi kontak belum dilengkapi admin masjid.
+                  <p className="text-sm text-slate-400" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                    Informasi kontak belum dilengkapi oleh admin sekolah.
                   </p>
                 )}
               </div>
             </div>
 
-            {/* Fasilitas */}
-            <div className="bg-white border border-[rgba(0,0,0,0.1)] rounded-2xl p-6">
-              <div className="badge-green mb-4 w-fit">
-                <Building2 size={14} />
-                <span>Fasilitas</span>
+            {/* Fasilitas & Program */}
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+              <div className="badge-blue mb-4 w-fit">
+                <GraduationCap size={15} />
+                <span>Program & Layanan ZIS</span>
               </div>
               {masjid.fasilitas && masjid.fasilitas.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {masjid.fasilitas.map((fas) => (
-                    <span key={fas.id} className="badge-sm">{fas.nama}</span>
+                    <span key={fas.id} className="badge-sm bg-sky-50 text-sky-700 font-medium border border-sky-100">{fas.nama}</span>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  Fasilitas belum didata.
-                </p>
+                <div className="space-y-2">
+                  <span className="badge-sm bg-sky-50 text-sky-700 font-medium border border-sky-100 mr-2">Beasiswa Siswa</span>
+                  <span className="badge-sm bg-sky-50 text-sky-700 font-medium border border-sky-100 mr-2">Kotak Infak Jumat</span>
+                  <span className="badge-sm bg-sky-50 text-sky-700 font-medium border border-sky-100">Bantuan SPP Mustahik</span>
+                </div>
               )}
             </div>
 
-            {/* Kajian & Acara Terbaru dari masjid ini (data asli) */}
-            <div className="md:col-span-2 bg-white border border-[rgba(0,0,0,0.1)] rounded-2xl p-6">
-              <div className="badge-green mb-4 w-fit">
-                <Users size={14} />
-                <span>Kajian & Acara</span>
+            {/* Kegiatan & Acara Terbaru dari UPZ Sekolah */}
+            <div className="md:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+              <div className="badge-blue mb-4 w-fit">
+                <Calendar size={14} />
+                <span>Kegiatan & Penyaluran Beasiswa</span>
               </div>
               {((masjid.kajian?.length ?? 0) + (masjid.acara?.length ?? 0)) > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {masjid.kajian?.slice(0, 4).map((k) => (
-                    <div key={`k-${k.id}`} className="flex items-start gap-3 p-3 bg-[#FAFAFA] rounded-xl border border-[rgba(0,0,0,0.04)]">
-                      <div className="w-9 h-9 rounded-full bg-[#EAF6E8] flex items-center justify-center text-[#28A71A] flex-shrink-0">
+                    <div key={`k-${k.id}`} className="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                      <div className="w-9 h-9 rounded-xl bg-sky-100 flex items-center justify-center text-sky-600 flex-shrink-0">
                         <Calendar size={16} />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-medium text-[#303030] truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{k.judul}</p>
-                        <p className="text-xs text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                          Kajian{k.tanggal ? ` • ${k.tanggal.slice(0, 10)}` : ''}
+                        <p className="text-sm font-semibold text-slate-800 truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{k.judul}</p>
+                        <p className="text-xs text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                          Kegiatan{k.tanggal ? ` • ${k.tanggal.slice(0, 10)}` : ''}
                         </p>
                       </div>
                     </div>
                   ))}
                   {masjid.acara?.slice(0, 4).map((a) => (
-                    <div key={`a-${a.id}`} className="flex items-start gap-3 p-3 bg-[#FAFAFA] rounded-xl border border-[rgba(0,0,0,0.04)]">
-                      <div className="w-9 h-9 rounded-full bg-[#EAF6E8] flex items-center justify-center text-[#28A71A] flex-shrink-0">
-                        <Calendar size={16} />
+                    <div key={`a-${a.id}`} className="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                      <div className="w-9 h-9 rounded-xl bg-sky-100 flex items-center justify-center text-sky-600 flex-shrink-0">
+                        <Award size={16} />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-medium text-[#303030] truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{a.judul}</p>
-                        <p className="text-xs text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                          Acara{a.tanggal ? ` • ${a.tanggal.slice(0, 10)}` : ''}
+                        <p className="text-sm font-semibold text-slate-800 truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{a.judul}</p>
+                        <p className="text-xs text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                          Penyaluran{a.tanggal ? ` • ${a.tanggal.slice(0, 10)}` : ''}
                         </p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  Belum ada kajian/acara yang dipublikasikan masjid ini.
+                <p className="text-sm text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Belum ada agenda atau penyaluran yang dipublikasikan oleh UPZ Sekolah ini.
                 </p>
               )}
             </div>

@@ -42,10 +42,10 @@ export default function TasbihDigital() {
     <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-5 relative overflow-hidden">
       {/* Celebration overlay */}
       {showCelebration && (
-        <div className="absolute inset-0 bg-[#28A71A]/5 flex items-center justify-center z-10 animate-in fade-in">
+        <div className="absolute inset-0 bg-[#0284C7]/5 flex items-center justify-center z-10 animate-in fade-in">
           <div className="text-center">
             <span className="text-3xl">🎉</span>
-            <p className="text-sm font-semibold text-[#28A71A] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <p className="text-sm font-semibold text-[#0284C7] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               {counter % 100 === 0 ? `${counter}x!` : 'Target Tercapai!'}
             </p>
           </div>
@@ -54,14 +54,14 @@ export default function TasbihDigital() {
 
       {/* Header */}
       <div className="flex items-center gap-2 mb-5">
-        <CircleDot size={18} className="text-[#28A71A]" />
+        <CircleDot size={18} className="text-[#0284C7]" />
         <h3 className="text-sm font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Tasbih Digital
         </h3>
       </div>
 
       {/* Counter Display */}
-      <div className="bg-gradient-to-br from-[#1C7712] to-[#28A71A] rounded-xl p-5 text-white text-center mb-5 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#0369A1] to-[#0284C7] rounded-xl p-5 text-white text-center mb-5 relative overflow-hidden">
         <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/5 rounded-full" />
         <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-white/5 rounded-full" />
 
@@ -79,7 +79,7 @@ export default function TasbihDigital() {
       {target > 0 && (
         <div className="w-full h-2 bg-[#F0F4F8] rounded-full mb-5 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#28A71A] to-[#6FC466] rounded-full transition-all duration-500 ease-out"
+            className="h-full bg-gradient-to-r from-[#0284C7] to-[#38BDF8] rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -90,14 +90,14 @@ export default function TasbihDigital() {
         <button
           onClick={decrement}
           disabled={counter === 0}
-          className="w-14 h-14 rounded-full border-2 border-[rgba(0,0,0,0.1)] flex items-center justify-center text-[#555] hover:border-[#28A71A] hover:text-[#28A71A] disabled:opacity-30 disabled:cursor-not-allowed transition-all active:scale-95"
+          className="w-14 h-14 rounded-full border-2 border-[rgba(0,0,0,0.1)] flex items-center justify-center text-[#555] hover:border-[#0284C7] hover:text-[#0284C7] disabled:opacity-30 disabled:cursor-not-allowed transition-all active:scale-95"
         >
           <Minus size={24} />
         </button>
 
         <button
           onClick={increment}
-          className="w-20 h-20 rounded-full bg-gradient-to-br from-[#28A71A] to-[#1C7712] flex items-center justify-center text-white shadow-lg hover:shadow-xl active:scale-95 transition-all"
+          className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0284C7] to-[#0369A1] flex items-center justify-center text-white shadow-lg hover:shadow-xl active:scale-95 transition-all"
         >
           <Plus size={32} />
         </button>
@@ -135,8 +135,8 @@ export default function TasbihDigital() {
               }}
               className={`text-[10px] py-1.5 px-1 rounded-lg font-medium transition-all ${
                 target === opt.value
-                  ? 'bg-[#28A71A] text-white'
-                  : 'bg-[#F0F4F8] text-[#555] hover:bg-[#EAF6E8] hover:text-[#28A71A]'
+                  ? 'bg-[#0284C7] text-white'
+                  : 'bg-[#F0F4F8] text-[#555] hover:bg-[#E0F2FE] hover:text-[#0284C7]'
               }`}
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >

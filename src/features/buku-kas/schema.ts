@@ -13,7 +13,7 @@ export const bukuKasPenerimaanSchema = z.object({
     .string()
     .min(1, 'Jumlah donatur wajib diisi')
     .refine((val) => !isNaN(Number(val)) && Number(val) >= 0, 'Jumlah donatur harus angka'),
-  keterangan: z.string().optional().default(''),
+  keterangan: z.string(),
 });
 
 export type BukuKasPenerimaanFormValues = z.infer<typeof bukuKasPenerimaanSchema>;

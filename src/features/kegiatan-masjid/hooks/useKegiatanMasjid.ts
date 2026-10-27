@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { kegiatanApi } from '../api';
-import type { Kegiatan, KegiatanFormData } from '../types';
+import type { KegiatanFormData } from '../types';
 
 const QUERY_KEY = 'kegiatan-masjid';
 

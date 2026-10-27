@@ -76,7 +76,7 @@ export default function BukuAsetPage() {
       label: 'Aksi',
       render: (a) => (
         <div className="flex items-center gap-1">
-          <button onClick={() => openEdit(a)} className="p-1.5 rounded-lg hover:bg-[#F0F4F8] text-[#555] hover:text-[#2B7FFF]"><Pencil size={15} /></button>
+          <button onClick={() => openEdit(a)} className="p-1.5 rounded-lg hover:bg-[#F0F4F8] text-[#555] hover:text-[#0284C7]"><Pencil size={15} /></button>
           <button onClick={() => handleDelete(a)} className="p-1.5 rounded-lg hover:bg-red-50 text-[#555] hover:text-red-500"><Trash2 size={15} /></button>
         </div>
       ),
@@ -86,12 +86,12 @@ export default function BukuAsetPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <Package size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <Package size={20} className="text-[#0284C7]" />
         </div>
         <div>
-          <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Buku Aset</h1>
-          <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Pencatatan inventaris dan aset masjid</p>
+          <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Buku Inventaris & Aset UPZ</h1>
+          <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Pencatatan inventaris dan sarana prasarana UPZ Sekolah</p>
         </div>
       </div>
 
@@ -113,24 +113,24 @@ export default function BukuAsetPage() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setShowForm(false)} />
           <div className="relative bg-white rounded-2xl p-6 w-full max-w-lg shadow-xl">
             <h3 className="text-lg font-semibold text-[#303030] mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {editItem ? 'Edit Aset' : 'Tambah Aset'}
+              {editItem ? 'Edit Aset UPZ Sekolah' : 'Tambah Aset UPZ Sekolah'}
             </h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1.5">Nama Aset</label>
                 <input value={formData.nama_aset} onChange={(e) => setFormData({ ...formData, nama_aset: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1.5">Jumlah</label>
                   <input type="number" min={1} value={formData.jumlah} onChange={(e) => setFormData({ ...formData, jumlah: Number(e.target.value) })}
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1.5">Kondisi</label>
                   <select value={formData.kondisi} onChange={(e) => setFormData({ ...formData, kondisi: e.target.value as AsetFormData['kondisi'] })}
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] bg-white">
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] bg-white">
                     {KONDISI_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
                   </select>
                 </div>
@@ -138,12 +138,12 @@ export default function BukuAsetPage() {
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1.5">Keterangan</label>
                 <textarea value={formData.keterangan} onChange={(e) => setFormData({ ...formData, keterangan: e.target.value })} rows={3}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] resize-none" />
               </div>
             </div>
             <div className="flex gap-3 mt-6 justify-end">
               <button onClick={() => setShowForm(false)} className="px-4 py-2 border border-[rgba(0,0,0,0.15)] rounded-xl text-sm text-[#303030] hover:bg-[#F0F4F8]">Batal</button>
-              <button onClick={handleSubmit} className="btn-primary-green rounded-xl"><Plus size={16} />{editItem ? 'Simpan' : 'Tambah'}</button>
+              <button onClick={handleSubmit} className="btn-primary-blue rounded-xl flex items-center gap-1.5"><Plus size={16} />{editItem ? 'Simpan' : 'Tambah'}</button>
             </div>
           </div>
         </div>

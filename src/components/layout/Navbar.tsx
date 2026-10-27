@@ -7,20 +7,26 @@ import {
   Heart,
   HandCoins,
   ChevronDown,
+  GraduationCap,
 } from 'lucide-react';
+
 const navLinks = [
   { name: 'Beranda', path: '/' },
   { name: 'Tentang Kami', path: '/tentang' },
-  { name: 'Masjid', path: '/masjid' },
+  { name: 'UPZ Sekolah', path: '/masjid' },
   { name: 'Publikasi', path: '/kajian' },
 ];
 
 const navSecondaryLinks = [
   { name: 'Tools', path: '/tools' },
-  { name: 'Ajukan Masjid', path: '/ajukan-masjid' },
+  { name: 'Ajukan UPZ Sekolah', path: '/ajukan-masjid' },
   { name: 'Microfinance', path: '/microfinance' },
   { name: 'Donasi', path: '/donasi' },
   { name: 'Kontak', path: '/kontak' },
+  { name: 'Kebijakan Privasi', path: '/kebijakan-privasi' },
+  { name: 'Disclaimer', path: '/disclaimer' },
+  { name: 'Syarat & Ketentuan', path: '/syarat-ketentuan' },
+  { name: 'Founder', path: '/founder' },
 ];
 
 export default function Navbar() {
@@ -30,10 +36,8 @@ export default function Navbar() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   /**
-   * Microfinance dilindungi ProtectedRoute (admin-masjid). Kalau belum login,
-   * arahkan LANGSUNG ke /login dengan state.from → setelah login user mendarat
-   * di /microfinance; ProtectedRoute tetap mem-validasi role (role lain →
-   * dashboard default masing-masing). Fix #48.
+   * Microfinance dilindungi ProtectedRoute (admin-masjid/admin-sekolah). Kalau belum login,
+   * arahkan LANGSUNG ke /login dengan state.from.
    */
   const linkTarget = (link: { name: string; path: string }) =>
     link.name === 'Microfinance' && !isAuthenticated
@@ -86,14 +90,14 @@ export default function Navbar() {
       {/* ===== MAIN NAVBAR ===== */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]'
-            : 'bg-white'
+            ? 'bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(2,132,199,0.08)] border-b border-sky-100'
+            : 'bg-white border-b border-slate-100'
           }`}
       >
         <div
           className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-[120px]"
           style={{
-            height: isScrolled ? '76px' : '76px',
+            height: isScrolled ? '72px' : '76px',
             maxWidth: '1440px',
             transition: 'height 0.3s ease',
           }}
@@ -104,24 +108,20 @@ export default function Navbar() {
             className="flex items-center gap-3 group flex-shrink-0"
           >
             {/* Logo Icon */}
-            <div className="relative w-9 h-9 flex-shrink-0">
-              <img
-                src="/images/logo-menara.svg"
-                alt="MENARA Masjid Logo"
-                className="w-full h-full object-contain"
-              />
+            <div className="relative w-10 h-10 flex-shrink-0 bg-gradient-to-tr from-sky-600 via-sky-500 to-sky-400 rounded-xl flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform duration-200">
+              <GraduationCap size={22} className="text-white drop-shadow-sm" />
             </div>
 
             {/* Brand Name */}
             <div className="flex flex-col">
               <span
-                className="font-semibold leading-tight text-[#303030] group-hover:text-[#28A71A] transition-colors duration-200"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '16px' }}
+                className="font-bold leading-tight text-slate-800 group-hover:text-sky-600 transition-colors duration-200 tracking-tight"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '18px' }}
               >
-                Menara Masjid
+                UPZ Sekolah
               </span>
               <span
-                className="text-[10px] leading-tight text-[#767676] hidden sm:block"
+                className="text-[10px] font-semibold leading-tight text-sky-600 hidden sm:block tracking-wider uppercase"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 BAZNAS RI
@@ -138,12 +138,12 @@ export default function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="relative px-3 py-2 group"
+                    className="relative px-3.5 py-2 group"
                   >
                     <span
                       className={`relative z-10 text-sm font-medium transition-colors duration-200 ${active
-                          ? 'text-[#28A71A]'
-                          : 'text-[#555555] group-hover:text-[#303030]'
+                          ? 'text-sky-600 font-semibold'
+                          : 'text-slate-600 group-hover:text-slate-900'
                         }`}
                       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
@@ -151,8 +151,8 @@ export default function Navbar() {
                     </span>
                     {/* Active indicator */}
                     <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#28A71A] rounded-full transition-all duration-300 ${active
-                          ? 'w-5 opacity-100'
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-sky-500 rounded-full transition-all duration-300 ${active
+                          ? 'w-6 opacity-100'
                           : 'w-0 opacity-0 group-hover:w-3 group-hover:opacity-50'
                         }`}
                     />
@@ -163,33 +163,33 @@ export default function Navbar() {
               {/* More dropdown for secondary links */}
               <div className="relative group">
                 <button
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#555555] hover:text-[#303030] transition-colors duration-200"
+                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   Lainnya
                   <ChevronDown
                     size={14}
-                    className="group-hover:rotate-180 transition-transform duration-200"
+                    className="group-hover:rotate-180 transition-transform duration-200 text-slate-400 group-hover:text-sky-600"
                   />
                 </button>
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-lg border border-[rgba(0,0,0,0.08)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0 overflow-hidden">
+                <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-sky-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0 overflow-hidden">
                   {navSecondaryLinks.map((link) => {
                     const target = linkTarget(link);
                     return (
-                    <Link
-                      key={link.path}
-                      to={target.to}
-                      state={target.state}
-                      className={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors duration-150 ${isActive(link.path)
-                          ? 'text-[#28A71A] bg-[#EAF6E8]'
-                          : 'text-[#555555] hover:bg-[#F0F4F8] hover:text-[#303030]'
-                        }`}
-                      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                    >
-                      {link.name === 'Donasi' && <Heart size={14} />}
-                      {link.name === 'Microfinance' && <HandCoins size={14} />}
-                      {link.name}
-                    </Link>
+                      <Link
+                        key={link.path}
+                        to={target.to}
+                        state={target.state}
+                        className={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors duration-150 ${isActive(link.path)
+                            ? 'text-sky-600 bg-sky-50 font-medium'
+                            : 'text-slate-600 hover:bg-sky-50/60 hover:text-slate-900'
+                          }`}
+                        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                      >
+                        {link.name === 'Donasi' && <Heart size={15} className="text-sky-500" />}
+                        {link.name === 'Microfinance' && <HandCoins size={15} className="text-sky-500" />}
+                        {link.name}
+                      </Link>
                     );
                   })}
                 </div>
@@ -202,43 +202,43 @@ export default function Navbar() {
             {/* Donasi Button */}
             <Link
               to="/donasi"
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#28A71A] text-[#28A71A] text-sm font-medium hover:bg-[#EAF6E8] transition-all duration-200"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-sky-500 text-sky-600 text-sm font-medium hover:bg-sky-50 transition-all duration-200"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              <Heart size={15} className="fill-[#28A71A]" />
+              <Heart size={15} className="fill-sky-500 text-sky-500" />
               Donasi
             </Link>
 
             {/* Login Button */}
             <Link
               to="/login"
-              className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#28A71A] text-white text-sm font-medium hover:bg-[#1C7712] hover:shadow-lg hover:shadow-[#28A71A]/25 active:scale-95 transition-all duration-200"
+              className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-600 to-sky-500 text-white text-sm font-medium hover:from-sky-700 hover:to-sky-600 shadow-md shadow-sky-500/25 active:scale-95 transition-all duration-200"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               <LogIn size={15} />
-              Login
+              Login Portal
             </Link>
           </div>
 
           {/* ===== MOBILE: HAMBURGER ===== */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#F0F4F8] transition-colors duration-200"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-sky-50 transition-colors duration-200"
             aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
           >
             <div className="relative w-5 h-5">
               <span
-                className={`absolute left-0 block h-0.5 bg-[#303030] rounded-full transition-all duration-300 ${isOpen
+                className={`absolute left-0 block h-0.5 bg-slate-800 rounded-full transition-all duration-300 ${isOpen
                     ? 'top-1/2 w-5 -translate-y-1/2 rotate-45'
                     : 'top-0 w-5'
                   }`}
               />
               <span
-                className={`absolute left-0 top-1/2 block h-0.5 bg-[#303030] rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 w-0' : 'opacity-100 w-4'
+                className={`absolute left-0 top-1/2 block h-0.5 bg-slate-800 rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 w-0' : 'opacity-100 w-4'
                   }`}
               />
               <span
-                className={`absolute left-0 block h-0.5 bg-[#303030] rounded-full transition-all duration-300 ${isOpen
+                className={`absolute left-0 block h-0.5 bg-slate-800 rounded-full transition-all duration-300 ${isOpen
                     ? 'top-1/2 w-5 -translate-y-1/2 -rotate-45'
                     : 'bottom-0 w-5'
                   }`}
@@ -257,31 +257,37 @@ export default function Navbar() {
       >
         {/* Overlay */}
         <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
 
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-[300px] max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`absolute top-0 right-0 h-full w-[310px] max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-out flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
-          {/* Close button */}
-          <div className="flex justify-end p-4">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-slate-100">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center text-white">
+                <GraduationCap size={18} />
+              </div>
+              <span className="font-bold text-slate-800 text-sm">UPZ Sekolah</span>
+            </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#F0F4F8] transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors"
               aria-label="Tutup menu"
             >
-              <X size={20} className="text-[#555]" />
+              <X size={20} className="text-slate-500" />
             </button>
           </div>
 
           {/* Navigation Links */}
-          <div className="px-4 pb-6">
+          <div className="px-4 py-4 flex-1 overflow-y-auto">
             <div className="space-y-1">
               <p
-                className="text-xs font-semibold text-[#767676] uppercase tracking-wider px-4 mb-2"
+                className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Navigasi
@@ -295,22 +301,22 @@ export default function Navbar() {
                     to={target.to}
                     state={target.state}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${active
-                        ? 'bg-[#EAF6E8] text-[#28A71A]'
-                        : 'text-[#555] hover:bg-[#F0F4F8] hover:text-[#303030]'
+                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${active
+                        ? 'bg-sky-50 text-sky-600 font-semibold'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                       }`}
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       animation: isOpen
-                        ? `slideIn 0.3s ease-out ${index * 0.05}s both`
+                        ? `slideIn 0.3s ease-out ${index * 0.04}s both`
                         : 'none',
                     }}
                   >
-                    {link.name === 'Donasi' && <Heart size={16} />}
-                    {link.name === 'Microfinance' && <HandCoins size={16} />}
+                    {link.name === 'Donasi' && <Heart size={16} className="text-sky-500" />}
+                    {link.name === 'Microfinance' && <HandCoins size={16} className="text-sky-500" />}
                     {link.name}
                     {active && (
-                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#28A71A]" />
+                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-sky-500" />
                     )}
                   </Link>
                 );
@@ -318,26 +324,26 @@ export default function Navbar() {
             </div>
 
             {/* Divider */}
-            <div className="my-4 mx-4 border-t border-[rgba(0,0,0,0.08)]" />
+            <div className="my-4 mx-2 border-t border-slate-100" />
 
             {/* Login CTA */}
-            <div className="px-4 space-y-3">
+            <div className="space-y-2.5">
               <Link
                 to="/login"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#28A71A] text-white text-sm font-medium hover:bg-[#1C7712] active:scale-[0.98] transition-all duration-200"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-gradient-to-r from-sky-600 to-sky-500 text-white text-sm font-medium hover:from-sky-700 hover:to-sky-600 shadow-md shadow-sky-500/20 active:scale-[0.98] transition-all duration-200"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 <LogIn size={16} />
-                Login
+                Login Portal
               </Link>
               <Link
                 to="/donasi"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full border border-[#28A71A] text-[#28A71A] text-sm font-medium hover:bg-[#EAF6E8] active:scale-[0.98] transition-all duration-200"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-full border border-sky-500 text-sky-600 text-sm font-medium hover:bg-sky-50 active:scale-[0.98] transition-all duration-200"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                <Heart size={16} />
+                <Heart size={16} className="text-sky-500" />
                 Donasi
               </Link>
             </div>

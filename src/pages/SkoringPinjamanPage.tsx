@@ -35,7 +35,7 @@ export default function SkoringPinjamanPage() {
       <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-6">
         <Link
           to="/microfinance"
-          className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#28A71A] transition-colors mb-4"
+          className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#0284C7] transition-colors mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           <ArrowLeft size={16} />
@@ -43,20 +43,20 @@ export default function SkoringPinjamanPage() {
         </Link>
 
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-            <ClipboardCheck size={20} className="text-[#28A71A]" />
+          <div className="w-10 h-10 bg-[#E0F2FE] rounded-xl flex items-center justify-center">
+            <ClipboardCheck size={20} className="text-[#0284C7]" />
           </div>
           <div>
             <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               Skoring Penilaian Pinjaman
             </h1>
-            <p className="text-xs text-[#555]">BMM — BAZNAS Microfinance Masjid</p>
+            <p className="text-xs text-[#555]">BMS — BAZNAS Microfinance UPZ Sekolah</p>
           </div>
         </div>
         <p className="text-xs text-[#555] bg-[#F0F4F8] rounded-lg p-3 mb-6">
           Isi asesmen ini bersama calon peminjam, lalu catat hasilnya secara manual
           (Total Skor, Keterangan, dan Rekomendasi Plafon) berdasarkan penilaian
-          Pendamping/Admin Masjid. Hasil di halaman ini bersifat catatan kerja —
+          Pendamping/Admin UPZ Sekolah. Hasil di halaman ini bersifat catatan kerja —
           simpan datanya ke menu &quot;Peserta Program&quot; di dashboard.
         </p>
 
@@ -72,7 +72,7 @@ export default function SkoringPinjamanPage() {
                       name={q.key}
                       checked={answers[q.key] === idx}
                       onChange={() => setAnswers({ ...answers, [q.key]: idx })}
-                      className="accent-[#28A71A]"
+                      className="accent-[#0284C7]"
                     />
                     {opt}
                   </label>
@@ -89,20 +89,20 @@ export default function SkoringPinjamanPage() {
           <div>
             <label className="block text-sm font-medium text-[#303030] mb-1.5">Total Skor</label>
             <input value={totalSkor} onChange={(e) => setTotalSkor(e.target.value)}
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
           </div>
           <div>
             <label className="block text-sm font-medium text-[#303030] mb-1.5">Keterangan (mis. Prospek / Kurang Prospek)</label>
             <input value={hasilKeterangan} onChange={(e) => setHasilKeterangan(e.target.value)}
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
           </div>
           <div>
             <label className="block text-sm font-medium text-[#303030] mb-1.5">Rekomendasi Plafon (Rp, maks 3.000.000)</label>
             <input type="number" max={3_000_000} value={rekomendasiPlafon} onChange={(e) => setRekomendasiPlafon(e.target.value)}
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
           </div>
 
-          <button onClick={() => window.print()} className="w-full btn-primary-green rounded-xl justify-center">
+          <button onClick={() => window.print()} className="w-full btn-primary-blue rounded-xl justify-center">
             <Printer size={16} /> Cetak Hasil Asesmen
           </button>
         </div>

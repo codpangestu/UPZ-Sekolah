@@ -144,7 +144,7 @@ export default function PublikasiPage() {
     switch (jenis) {
       case 'postingan':
         return [{ key: 'kategori', label: 'Kategori', render: (item) => (
-          <span className="text-xs font-medium bg-[#EAF6E8] text-[#28A71A] px-2 py-0.5 rounded-full">{item.kategori || '-'}</span>
+          <span className="text-xs font-medium bg-[#F0F9FF] text-[#0284C7] px-2 py-0.5 rounded-full">{item.kategori || '-'}</span>
         )}];
       case 'materi-khutbah':
         return [
@@ -173,7 +173,7 @@ export default function PublikasiPage() {
             <span className="text-sm text-text-gray flex items-center gap-1"><User size={12} />{item.pemateri || '-'}</span>
           )},
           { key: 'video_url', label: 'Video', render: (item) => (
-            <a href={item.video_url} target="_blank" rel="noopener noreferrer" className="text-sm text-[#28A71A] hover:underline truncate max-w-[200px] block">{item.video_url ? '🔗 Tonton' : '-'}</a>
+            <a href={item.video_url} target="_blank" rel="noopener noreferrer" className="text-sm text-[#0284C7] hover:underline truncate max-w-[200px] block">{item.video_url ? '🔗 Tonton' : '-'}</a>
           ), hideOnMobile: true },
         ];
       case 'cerita':
@@ -218,7 +218,7 @@ export default function PublikasiPage() {
     {
       key: 'status_aktif', label: 'Status',
       render: (item) => (
-        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${item.status_aktif ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-50 text-text-gray'}`}>
+        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${item.status_aktif ? 'bg-[#F0F9FF] text-[#0284C7] border border-[#BAE6FD]' : 'bg-gray-50 text-text-gray'}`}>
           {item.status_aktif ? 'Aktif' : 'Tidak Aktif'}
         </span>
       ),
@@ -233,7 +233,7 @@ export default function PublikasiPage() {
       key: 'aksi', label: 'Aksi', className: 'text-right',
       render: (item) => (
         <div className="flex items-center justify-end gap-2">
-          <button onClick={() => handleEdit(item)} className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F4F8] hover:text-[#28A71A] transition-colors" title="Edit"><Pencil size={15} /></button>
+          <button onClick={() => handleEdit(item)} className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F9FF] hover:text-[#0284C7] transition-colors" title="Edit"><Pencil size={15} /></button>
           <button onClick={() => handleDelete(item)} className="p-1.5 rounded-lg text-text-gray hover:bg-red-50 hover:text-red-500 transition-colors" title="Hapus"><Trash2 size={15} /></button>
         </div>
       ),
@@ -244,14 +244,14 @@ export default function PublikasiPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <Megaphone size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <Megaphone size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h2 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Menu Publikasi
+            Menu Publikasi & Informasi
           </h2>
-          <p className="text-sm text-text-gray">Kelola konten publikasi masjid</p>
+          <p className="text-sm text-text-gray">Kelola konten berita, program edukasi ZIS, dan agenda UPZ Sekolah</p>
         </div>
       </div>
 
@@ -264,7 +264,7 @@ export default function PublikasiPage() {
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
               className={`flex items-center gap-1.5 px-3 py-2.5 text-xs font-medium border-b-2 whitespace-nowrap transition-all flex-shrink-0 ${
-                isActive ? 'text-[#28A71A] border-[#28A71A]' : 'text-text-gray border-transparent hover:text-[#303030] hover:border-[#D4D4D4]'
+                isActive ? 'text-[#0284C7] border-[#0284C7]' : 'text-text-gray border-transparent hover:text-[#303030] hover:border-[#D4D4D4]'
               }`}
             >
               <tab.icon size={14} />

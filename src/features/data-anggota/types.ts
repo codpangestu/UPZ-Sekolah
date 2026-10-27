@@ -48,9 +48,9 @@ export interface MasterDataItem {
 }
 
 export const ANGGOTA_LABELS: Record<JenisAnggota, string> = {
-  ustadz: 'Ustadz',
-  marbot: 'Marbot',
-  jamaah: 'Jamaah',
+  ustadz: 'Guru / Pembimbing',
+  marbot: 'Staf / Tenaga Kependidikan',
+  jamaah: 'Siswa / Mustahik Binaan',
 };
 
 export const JENIS_KELAMIN_OPTIONS = [
@@ -59,22 +59,21 @@ export const JENIS_KELAMIN_OPTIONS = [
 ];
 
 export const BIDANG_KEAHLIAN_OPTIONS = [
-  'Tahsin/Tahfidz',
-  'Fiqih',
-  'Aqidah',
-  'Tafsir',
-  'Hadits',
-  'Bahasa Arab',
-  'Khotib',
+  'Guru PAI / Agama',
+  'Guru Wali Kelas',
+  'Pembina OSIS / Ekstrakurikuler',
+  'Tahsin / Tahfidz Quran',
+  'Koordinator ZIS Sekolah',
+  'Bimbingan Konseling (BK)',
   'Umum',
 ];
 
 export const TUGAS_MARBOT_OPTIONS = [
-  'Kebersihan Masjid',
-  'Perawatan Bangunan',
-  'Sound System',
-  'Parkir',
-  'Keamanan',
+  'Administrasi UPZ Sekolah',
+  'Pengelolaan Sarana & Prasarana',
+  'Penyalur Bantuan Beasiswa',
+  'Pengelola Kotak Infak',
+  'Keamanan & Ketertiban',
   'Umum',
 ];
 

@@ -37,7 +37,7 @@ export default function TodoList() {
       {/* Header */}
       <div className="p-5 border-b border-[rgba(0,0,0,0.1)]">
         <div className="flex items-center gap-2 mb-4">
-          <ListTodo size={18} className="text-[#28A71A]" />
+          <ListTodo size={18} className="text-[#0284C7]" />
           <h3 className="text-sm font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             To-do List
           </h3>
@@ -51,13 +51,13 @@ export default function TodoList() {
             onChange={(e) => setNewTodo(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
             placeholder="Tambah tugas baru..."
-            className="flex-1 px-3 py-2.5 border border-[rgba(0,0,0,0.1)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] placeholder:text-[#B0B0B0]"
+            className="flex-1 px-3 py-2.5 border border-[rgba(0,0,0,0.1)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] placeholder:text-[#B0B0B0]"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           />
           <button
             onClick={handleAdd}
             disabled={!newTodo.trim()}
-            className="px-4 py-2.5 bg-[#28A71A] disabled:bg-[#D4D4D4] text-white rounded-lg hover:bg-[#1C7712] transition-colors"
+            className="px-4 py-2.5 bg-[#0284C7] disabled:bg-[#D4D4D4] text-white rounded-lg hover:bg-[#0369A1] transition-colors"
           >
             <Plus size={18} />
           </button>
@@ -73,7 +73,7 @@ export default function TodoList() {
             onClick={() => setFilter(f)}
             className={`text-xs px-3 py-1 rounded-full transition-colors ${
               filter === f
-                ? 'bg-[#28A71A] text-white'
+                ? 'bg-[#0284C7] text-white'
                 : 'text-[#555] hover:bg-[#F0F4F8]'
             }`}
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
@@ -103,8 +103,8 @@ export default function TodoList() {
                 onClick={() => toggleTodo(todo.id)}
                 className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
                   todo.completed
-                    ? 'bg-[#28A71A] border-[#28A71A]'
-                    : 'border-[rgba(0,0,0,0.1)] hover:border-[#28A71A]'
+                    ? 'bg-[#0284C7] border-[#0284C7]'
+                    : 'border-[rgba(0,0,0,0.1)] hover:border-[#0284C7]'
                 }`}
               >
                 {todo.completed && <Check size={12} className="text-white" />}
@@ -120,7 +120,7 @@ export default function TodoList() {
                     if (e.key === 'Enter') handleEdit(todo.id);
                     if (e.key === 'Escape') setEditingId(null);
                   }}
-                  className="flex-1 px-2 py-1 border border-[#28A71A] rounded text-sm focus:outline-none"
+                  className="flex-1 px-2 py-1 border border-[#0284C7] rounded text-sm focus:outline-none"
                   autoFocus
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 />

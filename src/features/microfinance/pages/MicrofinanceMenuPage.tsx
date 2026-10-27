@@ -31,15 +31,15 @@ export default function MicrofinanceMenuPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <HandCoins size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <HandCoins size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Microfinance
+            Microfinance & Bantuan Usaha UPZ
           </h1>
           <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            BMM — BAZNAS Microfinance Masjid: layanan pinjaman modal usaha tanpa bunga (qardhul hasan) untuk jamaah masjid
+            Program bantuan modal produktif tanpa bunga (qardhul hasan) BAZNAS untuk wali murid & binaan UPZ Sekolah
           </p>
         </div>
       </div>
@@ -50,13 +50,13 @@ export default function MicrofinanceMenuPage() {
             <div
               className={`h-full bg-white rounded-2xl border p-5 transition-all ${
                 item.available
-                  ? 'border-[rgba(0,0,0,0.1)] hover:border-[#28A71A] hover:shadow-md cursor-pointer'
+                  ? 'border-[rgba(0,0,0,0.1)] hover:border-[#0284C7] hover:shadow-md cursor-pointer'
                   : 'border-[rgba(0,0,0,0.06)] opacity-60 cursor-not-allowed'
               }`}
             >
               <div className="flex items-start justify-between mb-3">
-                <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-                  <item.icon size={18} className="text-[#28A71A]" />
+                <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+                  <item.icon size={18} className="text-[#0284C7]" />
                 </div>
                 {!item.available && (
                   <span className="badge-xs bg-[#F0F4F8] text-[#555]">Segera Hadir</span>

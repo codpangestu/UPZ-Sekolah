@@ -54,14 +54,14 @@ export default function JamDigital() {
     <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-5">
       {/* Header */}
       <div className="flex items-center gap-2 mb-5">
-        <Clock size={18} className="text-[#28A71A]" />
+        <Clock size={18} className="text-[#0284C7]" />
         <h3 className="text-sm font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           Jam Digital
         </h3>
       </div>
 
       {/* Time Display */}
-      <div className="bg-gradient-to-br from-[#1C7712] to-[#28A71A] rounded-xl p-5 text-white text-center relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#0369A1] to-[#0284C7] rounded-xl p-5 text-white text-center relative overflow-hidden">
         {/* Decorative circles */}
         <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/5 rounded-full" />
         <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-white/5 rounded-full" />

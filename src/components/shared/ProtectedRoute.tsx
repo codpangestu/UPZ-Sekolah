@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children, allowedRoles }: ProtectedRout
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 size={32} className="animate-spin text-[#28A71A]" />
+          <Loader2 size={32} className="animate-spin text-[#0284C7]" />
           <span
             className="text-sm text-text-gray"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}

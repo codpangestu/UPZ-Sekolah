@@ -128,7 +128,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
             <input
               type="text" {...register('judul')}
               placeholder="Judul konten"
-              className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.judul ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`}
+              className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.judul ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`}
             />
             {errors.judul && <p className="text-xs text-red-500 mt-1">{errors.judul.message as string}</p>}
           </div>
@@ -141,7 +141,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
                 {...register('konten')}
                 placeholder="Tulis konten..."
                 rows={4}
-                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all resize-none ${errors.konten ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`}
+                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all resize-none ${errors.konten ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`}
               />
               {errors.konten && <p className="text-xs text-red-500 mt-1">{errors.konten.message as string}</p>}
             </div>
@@ -153,7 +153,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <label className="block text-sm font-medium text-[#303030] mb-1">Kategori <span className="text-red-500">*</span></label>
               <select
                 {...register('kategori')}
-                className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.kategori ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`}
+                className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.kategori ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`}
               >
                 <option value="">Pilih Kategori</option>
                 {KATEGORI_OPTIONS.map((opt) => (<option key={opt} value={opt}>{opt}</option>))}
@@ -169,7 +169,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <input
                 type="text" {...register('gambar')}
                 placeholder="https://..."
-                className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all"
+                className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all"
               />
             </div>
           )}
@@ -180,13 +180,13 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Pemateri <span className="text-red-500">*</span></label>
                 <input type="text" {...register('pemateri')} placeholder="Nama pemateri"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.pemateri && <p className="text-xs text-red-500 mt-1">{errors.pemateri.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Tanggal <span className="text-red-500">*</span></label>
                 <input type="date" {...register('tanggal')}
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.tanggal ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.tanggal ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.tanggal && <p className="text-xs text-red-500 mt-1">{errors.tanggal.message as string}</p>}
               </div>
             </div>
@@ -198,13 +198,13 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">URL <span className="text-red-500">*</span></label>
                 <input type="url" {...register('url')} placeholder="https://..."
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.url ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.url ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.url && <p className="text-xs text-red-500 mt-1">{errors.url.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Tipe Media <span className="text-red-500">*</span></label>
                 <select {...register('tipe_media')}
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.tipe_media ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`}>
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.tipe_media ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`}>
                   <option value="">Pilih Tipe</option>
                   {TIPE_MEDIA_OPTIONS.map((opt) => (<option key={opt} value={opt}>{opt}</option>))}
                 </select>
@@ -220,7 +220,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1">Hari <span className="text-red-500">*</span></label>
                   <select {...register('hari')}
-                    className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.hari ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`}>
+                    className={`w-full px-4 py-2.5 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.hari ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`}>
                     <option value="">Pilih Hari</option>
                     {HARI_OPTIONS.map((opt) => (<option key={opt} value={opt}>{opt}</option>))}
                   </select>
@@ -229,20 +229,20 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1">Jam <span className="text-red-500">*</span></label>
                   <input type="time" {...register('jam')}
-                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.jam ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.jam ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                   {errors.jam && <p className="text-xs text-red-500 mt-1">{errors.jam.message as string}</p>}
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Pemateri <span className="text-red-500">*</span></label>
                 <input type="text" {...register('pemateri')} placeholder="Nama pemateri"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.pemateri && <p className="text-xs text-red-500 mt-1">{errors.pemateri.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Lokasi <span className="text-red-500">*</span></label>
                 <input type="text" {...register('lokasi')} placeholder="Lokasi kajian"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.lokasi ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.lokasi ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.lokasi && <p className="text-xs text-red-500 mt-1">{errors.lokasi.message as string}</p>}
               </div>
             </>
@@ -254,13 +254,13 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">URL Video <span className="text-red-500">*</span></label>
                 <input type="url" {...register('video_url')} placeholder="https://youtube.com/..."
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.video_url ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.video_url ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.video_url && <p className="text-xs text-red-500 mt-1">{errors.video_url.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Pemateri <span className="text-red-500">*</span></label>
                 <input type="text" {...register('pemateri')} placeholder="Nama pemateri"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.pemateri ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.pemateri && <p className="text-xs text-red-500 mt-1">{errors.pemateri.message as string}</p>}
               </div>
             </>
@@ -271,7 +271,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
             <div>
               <label className="block text-sm font-medium text-[#303030] mb-1">Penulis <span className="text-red-500">*</span></label>
               <input type="text" {...register('penulis')} placeholder="Nama penulis"
-                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.penulis ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.penulis ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
               {errors.penulis && <p className="text-xs text-red-500 mt-1">{errors.penulis.message as string}</p>}
             </div>
           )}
@@ -282,13 +282,13 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Target Dana (Rp) <span className="text-red-500">*</span></label>
                 <input type="number" {...register('target_dana')} placeholder="0"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.target_dana ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.target_dana ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.target_dana && <p className="text-xs text-red-500 mt-1">{errors.target_dana.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Tanggal Berakhir <span className="text-red-500">*</span></label>
                 <input type="date" {...register('tanggal_berakhir')}
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.tanggal_berakhir ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.tanggal_berakhir ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.tanggal_berakhir && <p className="text-xs text-red-500 mt-1">{errors.tanggal_berakhir.message as string}</p>}
               </div>
             </div>
@@ -301,20 +301,20 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1">Tanggal Mulai <span className="text-red-500">*</span></label>
                   <input type="date" {...register('tanggal_mulai')}
-                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.tanggal_mulai ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.tanggal_mulai ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                   {errors.tanggal_mulai && <p className="text-xs text-red-500 mt-1">{errors.tanggal_mulai.message as string}</p>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#303030] mb-1">Tanggal Selesai <span className="text-red-500">*</span></label>
                   <input type="date" {...register('tanggal_selesai')}
-                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.tanggal_selesai ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                    className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.tanggal_selesai ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                   {errors.tanggal_selesai && <p className="text-xs text-red-500 mt-1">{errors.tanggal_selesai.message as string}</p>}
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1">Lokasi <span className="text-red-500">*</span></label>
                 <input type="text" {...register('lokasi')} placeholder="Lokasi acara"
-                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all ${errors.lokasi ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'}`} />
+                  className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all ${errors.lokasi ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#0284C7]'}`} />
                 {errors.lokasi && <p className="text-xs text-red-500 mt-1">{errors.lokasi.message as string}</p>}
               </div>
             </>
@@ -324,7 +324,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
           <div>
             <label className="block text-sm font-medium text-[#303030] mb-1">Status</label>
             <select {...register('status_aktif')}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all">
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all">
               {STATUS_AKTIF_OPTIONS.map((opt) => (<option key={opt.value} value={opt.value}>{opt.label}</option>))}
             </select>
           </div>
@@ -333,7 +333,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
           <div>
             <label className="block text-sm font-medium text-[#303030] mb-1">Keterangan</label>
             <textarea {...register('keterangan')} placeholder="Catatan tambahan..." rows={2}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all resize-none"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all resize-none"
             />
           </div>
 
@@ -344,7 +344,7 @@ export default function FormModal({ open, onClose, onSubmit, submitting, editIte
               Batal
             </button>
             <button type="submit" disabled={submitting}
-              className="flex-1 py-2.5 bg-[#28A71A] hover:bg-[#1C7712] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2">
+              className="flex-1 py-2.5 bg-[#0284C7] hover:bg-[#0369A1] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2">
               {submitting ? <Loader2 size={16} className="animate-spin" /> : null}
               {submitting ? 'Menyimpan...' : editItem ? 'Simpan Perubahan' : 'Simpan'}
             </button>

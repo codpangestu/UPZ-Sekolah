@@ -1,5 +1,4 @@
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 
 interface KuitansiData {
   /** 'penerimaan' or 'pengeluaran' */
@@ -39,7 +38,7 @@ export function generateKuitansiPDF(data: KuitansiData) {
   // Header
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.text(data.namaMasjid || 'Masjid', 14, 15);
+  doc.text(data.namaMasjid || 'UPZ Sekolah', 14, 15);
   if (data.kodeMasjid) {
     doc.text(`Kode: ${data.kodeMasjid}`, 14, 21);
   }
@@ -94,7 +93,7 @@ export function generateKuitansiPDF(data: KuitansiData) {
   doc.setFontSize(12);
   doc.setFont('helvetica', 'bold');
   doc.text(isPenerimaan ? 'Jumlah Diterima:' : 'Jumlah Dikeluarkan:', labelX, y);
-  doc.setTextColor(0, 100, 68); // dark green
+  doc.setTextColor(2, 132, 199); // bright blue rgb(2, 132, 199)
   doc.text(formatCurrency(data.nominal), valueX, y);
   doc.setTextColor(0); // reset
 
@@ -110,13 +109,13 @@ export function generateKuitansiPDF(data: KuitansiData) {
   // Tanda tangan kiri
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.text('Bendahara', leftMargin + sigWidth / 2, y, { align: 'center' });
+  doc.text('Bendahara UPZ', leftMargin + sigWidth / 2, y, { align: 'center' });
   y += 20;
   doc.text('________________________', leftMargin + sigWidth / 2, y, { align: 'center' });
 
   // Tanda tangan kanan
   y -= 20;
-  doc.text('Ketua Takmir', leftMargin + sigWidth + sigWidth / 2, y, { align: 'center' });
+  doc.text('Ketua UPZ Sekolah', leftMargin + sigWidth + sigWidth / 2, y, { align: 'center' });
   y += 20;
   doc.text('________________________', leftMargin + sigWidth + sigWidth / 2, y, { align: 'center' });
 
@@ -125,7 +124,7 @@ export function generateKuitansiPDF(data: KuitansiData) {
   doc.setFont('helvetica', 'italic');
   doc.setTextColor(150);
   doc.text(
-    'Dokumen ini dicetak secara otomatis oleh Sistem MENARA Masjid BAZNAS',
+    'Dokumen ini dicetak secara otomatis oleh Sistem UPZ Sekolah BAZNAS',
     pageWidth / 2,
     doc.internal.pageSize.getHeight() - 10,
     { align: 'center' }

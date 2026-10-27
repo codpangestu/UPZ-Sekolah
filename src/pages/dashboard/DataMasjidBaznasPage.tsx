@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Building2, Search, Loader2, MapPin, ExternalLink, KeyRound, ChevronDown } from 'lucide-react';
+import { GraduationCap, Search, Loader2, MapPin, ExternalLink, KeyRound, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { masjidService } from '../../services/masjidService';
 import { adminService } from '../../services/adminService';
@@ -133,17 +133,17 @@ export default function DataMasjidBaznasPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-            <Building2 size={20} className="text-[#28A71A]" />
+          <div className="w-10 h-10 bg-[#E0F2FE] rounded-xl flex items-center justify-center">
+            <GraduationCap size={20} className="text-[#0284C7]" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              Data Masjid
+            <h2 className="text-lg font-bold text-slate-800" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Data UPZ Sekolah
             </h2>
-            <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {allItems.length} masjid terdaftar di seluruh Indonesia
+            <p className="text-sm text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              {allItems.length} UPZ sekolah terdaftar di seluruh Indonesia
               {hasActiveFilter && (
-                <span className="text-[#28A71A] font-medium"> · {total} ditampilkan</span>
+                <span className="text-[#0284C7] font-semibold"> · {total} ditampilkan</span>
               )}
             </p>
           </div>
@@ -151,24 +151,24 @@ export default function DataMasjidBaznasPage() {
         <button
           onClick={loadData}
           disabled={loading}
-          className="text-sm text-[#28A71A] hover:text-[#1C7712] transition-colors flex items-center gap-1"
+          className="text-sm text-[#0284C7] hover:text-[#0369A1] font-semibold transition-colors flex items-center gap-1.5"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           <Loader2 size={14} className={loading ? 'animate-spin' : ''} />
-          Refresh
+          Muat Ulang
         </button>
       </div>
 
       {/* Search + Region Filters */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Cari nama masjid, alamat, atau kode..."
-            className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+            placeholder="Cari nama sekolah, alamat, atau kode UPZ..."
+            className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           />
         </div>
@@ -176,7 +176,7 @@ export default function DataMasjidBaznasPage() {
           <select
             value={provinsiFilter}
             onChange={(e) => setProvinsiFilter(e.target.value)}
-            className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none"
+            className="w-full pl-4 pr-8 py-2.5 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <option value="">Semua Provinsi</option>
@@ -186,14 +186,14 @@ export default function DataMasjidBaznasPage() {
               </option>
             ))}
           </select>
-          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B0B0] pointer-events-none" />
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
         </div>
         <div className="relative sm:w-52">
           <select
             value={kabFilter}
             onChange={(e) => setKabFilter(e.target.value)}
             disabled={!provinsiFilter}
-            className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
+            className="w-full pl-4 pr-8 py-2.5 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none disabled:opacity-50 disabled:bg-slate-100"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <option value="">Semua Kab/Kota</option>
@@ -203,55 +203,55 @@ export default function DataMasjidBaznasPage() {
               </option>
             ))}
           </select>
-          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B0B0B0] pointer-events-none" />
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs">
         {loading ? (
           <div className="p-12 text-center">
-            <Loader2 size={24} className="animate-spin text-[#28A71A] mx-auto mb-2" />
-            <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Memuat data masjid...</p>
+            <Loader2 size={24} className="animate-spin text-[#0284C7] mx-auto mb-2" />
+            <p className="text-sm text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Memuat data UPZ sekolah...</p>
           </div>
         ) : pageItems.length === 0 ? (
           <div className="p-12 text-center">
-            <Building2 size={40} className="text-[#D4D4D4] mx-auto mb-3" />
-            <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              {hasActiveFilter ? 'Tidak ada masjid yang cocok dengan filter' : 'Belum ada data masjid'}
+            <GraduationCap size={40} className="text-slate-300 mx-auto mb-3" />
+            <p className="text-sm text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              {hasActiveFilter ? 'Tidak ada UPZ sekolah yang cocok dengan filter' : 'Belum ada data UPZ sekolah'}
             </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-[#F0F4F8]">
-                  <th className="text-left text-xs font-medium text-text-gray px-4 py-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Nama Masjid</th>
-                  <th className="text-left text-xs font-medium text-text-gray px-4 py-3 hidden sm:table-cell" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Kode</th>
-                  <th className="text-left text-xs font-medium text-text-gray px-4 py-3 hidden md:table-cell" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Alamat</th>
-                  <th className="text-right text-xs font-medium text-text-gray px-4 py-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Aksi</th>
+                <tr className="border-b border-slate-100 bg-slate-50/50">
+                  <th className="text-left text-xs font-semibold text-slate-600 px-4 py-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Nama UPZ Sekolah</th>
+                  <th className="text-left text-xs font-semibold text-slate-600 px-4 py-3 hidden sm:table-cell" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Kode UPZ</th>
+                  <th className="text-left text-xs font-semibold text-slate-600 px-4 py-3 hidden md:table-cell" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Alamat Sekolah</th>
+                  <th className="text-right text-xs font-semibold text-slate-600 px-4 py-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Aksi</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#F0F4F8]">
+              <tbody className="divide-y divide-slate-100">
                 {pageItems.map((m) => (
-                  <tr key={m.id_masjid} className="hover:bg-[#FAFAFA] transition-colors">
+                  <tr key={m.id_masjid} className="hover:bg-slate-50/80 transition-colors">
                     <td className="px-4 py-3">
-                      <p className="text-sm font-medium text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      <p className="text-sm font-semibold text-slate-800" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         {m.nama_masjid}
                       </p>
-                      <p className="text-xs text-text-gray md:hidden truncate max-w-[200px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      <p className="text-xs text-slate-500 md:hidden truncate max-w-[200px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         {m.alamat_masjid}
                       </p>
                     </td>
                     <td className="px-4 py-3 hidden sm:table-cell">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#006844] bg-[#E6F9F0] px-2 py-1 rounded-md" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#0369A1] bg-[#E0F2FE] px-2 py-1 rounded-md" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         <KeyRound size={12} />
                         {m.kode_org_baznas || m.id_masjid}
                       </span>
                     </td>
                     <td className="px-4 py-3 hidden md:table-cell">
-                      <span className="text-sm text-text-gray flex items-start gap-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                        <MapPin size={14} className="flex-shrink-0 mt-0.5 text-[#B0B0B0]" />
+                      <span className="text-sm text-slate-600 flex items-start gap-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                        <MapPin size={14} className="flex-shrink-0 mt-0.5 text-slate-400" />
                         <span className="truncate max-w-[320px]">{m.alamat_masjid || '-'}</span>
                       </span>
                     </td>
@@ -259,11 +259,11 @@ export default function DataMasjidBaznasPage() {
                       <Link
                         to={`/masjid/${m.slug_masjid || m.id_masjid}`}
                         target="_blank"
-                        className="inline-flex items-center gap-1 text-[#28A71A] hover:text-[#1C7712] transition-colors text-sm"
+                        className="inline-flex items-center gap-1 text-[#0284C7] hover:text-[#0369A1] font-semibold transition-colors text-sm"
                         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                       >
                         <ExternalLink size={14} />
-                        Lihat
+                        Lihat Profil
                       </Link>
                     </td>
                   </tr>
@@ -277,14 +277,14 @@ export default function DataMasjidBaznasPage() {
       {/* Pagination */}
       {!loading && total > PER_PAGE && (
         <div className="flex items-center justify-between">
-          <p className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Halaman {page} dari {totalPages} · {total} masjid
+          <p className="text-xs text-slate-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Halaman {page} dari {totalPages} · {total} UPZ sekolah
           </p>
           <div className="flex gap-2">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1}
-              className="px-3 py-1.5 border border-[#D4D4D4] rounded-lg text-xs text-[#555] hover:border-[#28A71A] hover:text-[#28A71A] disabled:opacity-40 disabled:pointer-events-none transition-colors"
+              className="px-3 py-1.5 border border-slate-200 rounded-lg text-xs text-slate-600 hover:border-[#0284C7] hover:text-[#0284C7] disabled:opacity-40 disabled:pointer-events-none transition-colors"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Sebelumnya
@@ -292,7 +292,7 @@ export default function DataMasjidBaznasPage() {
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages}
-              className="px-3 py-1.5 border border-[#D4D4D4] rounded-lg text-xs text-[#555] hover:border-[#28A71A] hover:text-[#28A71A] disabled:opacity-40 disabled:pointer-events-none transition-colors"
+              className="px-3 py-1.5 border border-slate-200 rounded-lg text-xs text-slate-600 hover:border-[#0284C7] hover:text-[#0284C7] disabled:opacity-40 disabled:pointer-events-none transition-colors"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Berikutnya
@@ -303,3 +303,4 @@ export default function DataMasjidBaznasPage() {
     </div>
   );
 }
+

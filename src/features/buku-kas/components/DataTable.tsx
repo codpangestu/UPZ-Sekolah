@@ -90,7 +90,7 @@ export default function DataTable<T extends Record<string, any>>({
                 value={searchQuery}
                 onChange={(e) => onSearch(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="w-full pl-10 pr-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                className="w-full pl-10 pr-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               />
             </div>
@@ -107,7 +107,7 @@ export default function DataTable<T extends Record<string, any>>({
                     key={f.key}
                     value={f.value}
                     onChange={(e) => f.onChange(e.target.value)}
-                    className="px-3 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                    className="px-3 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     <option value="">{f.placeholder || `Semua ${f.label}`}</option>
@@ -131,7 +131,7 @@ export default function DataTable<T extends Record<string, any>>({
                   value={dateRange.startValue}
                   onChange={(e) => dateRange.onStartChange(e.target.value)}
                   title={dateRange.startLabel || 'Tanggal Mulai'}
-                  className="px-2 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                  className="px-2 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 />
                 <span className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>s/d</span>
@@ -140,7 +140,7 @@ export default function DataTable<T extends Record<string, any>>({
                   value={dateRange.endValue}
                   onChange={(e) => dateRange.onEndChange(e.target.value)}
                   title={dateRange.endLabel || 'Tanggal Selesai'}
-                  className="px-2 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                  className="px-2 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 />
               </div>
@@ -148,7 +148,7 @@ export default function DataTable<T extends Record<string, any>>({
             {onAdd && (
               <button
                 onClick={onAdd}
-                className="px-4 py-2 bg-[#28A71A] hover:bg-[#1C7712] text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+                className="px-4 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2 shadow-xs"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -166,7 +166,7 @@ export default function DataTable<T extends Record<string, any>>({
       <div className="overflow-x-auto">
         {loading ? (
           <div className="p-12 text-center">
-            <Loader2 size={24} className="animate-spin text-[#28A71A] mx-auto mb-2" />
+            <Loader2 size={24} className="animate-spin text-[#0284C7] mx-auto mb-2" />
             <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Memuat data...</p>
           </div>
         ) : data.length === 0 ? (
@@ -217,7 +217,7 @@ export default function DataTable<T extends Record<string, any>>({
               <select
                 value={perPage}
                 onChange={(e) => onPerPageChange(Number(e.target.value))}
-                className="px-2 py-1 border border-[#D4D4D4] rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                className="px-2 py-1 border border-[#D4D4D4] rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               >
                 {perPageOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>

@@ -12,7 +12,7 @@ export const bukuKasPengeluaranSchema = z.object({
   penerima: z
     .string()
     .min(1, 'Penerima wajib diisi'),
-  keterangan: z.string().optional().default(''),
+  keterangan: z.string(),
 });
 
 export type BukuKasPengeluaranFormValues = z.infer<typeof bukuKasPengeluaranSchema>;

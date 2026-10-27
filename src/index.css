@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #28A71A;
-  --color-primary-dark: #1C7712;
-  --color-primary-light: #6FC466;
-  --color-primary-bg: #EAF6E8;
-  --color-primary-badge: #E6F9F0;
-  --color-secondary: #EFB100;
-  --color-text-dark: #303030;
-  --color-text-gray: #555555;
-  --color-text-muted: #767676;
-  --color-text-black: #000000;
-  --color-bg-main: #FAFAFA;
-  --color-border-light: rgba(0, 0, 0, 0.1);
-  --color-success-teal: #00C16A;
-  --color-badge-text: #006844;
-  --color-blue-bg: #EAF2FF;
-  --color-blue-primary: #2B7FFF;
-  --color-gray-light: #F0F4F8;
-  --color-gray-border: #D4D4D4;
+  --color-primary: #0284C7;
+  --color-primary-dark: #0369A1;
+  --color-primary-light: #38BDF8;
+  --color-primary-bg: #F0F9FF;
+  --color-primary-badge: #E0F2FE;
+  --color-secondary: #F59E0B;
+  --color-text-dark: #1E293B;
+  --color-text-gray: #475569;
+  --color-text-muted: #64748B;
+  --color-text-black: #0F172A;
+  --color-bg-main: #F8FAFC;
+  --color-border-light: rgba(14, 165, 233, 0.15);
+  --color-success-teal: #0EA5E9;
+  --color-badge-text: #0369A1;
+  --color-blue-bg: #F0F9FF;
+  --color-blue-primary: #0284C7;
+  --color-gray-light: #F1F5F9;
+  --color-gray-border: #CBD5E1;
   --color-white: #FFFFFF;
-  --color-footer-bg: #000000;
+  --color-footer-bg: #0F172A;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 }
@@ -127,13 +127,15 @@
   }
 
   /* ---- Buttons ---- */
-  .btn-primary-green {
+  /* ---- Buttons ---- */
+  .btn-primary-green,
+  .btn-primary-blue {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 8px 16px;
-    background-color: #28A71A;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
     color: #FFFFFF;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -141,50 +143,59 @@
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.25);
+    transition: all 0.25s ease;
   }
 
-  .btn-primary-green:hover {
-    background-color: #1C7712;
+  .btn-primary-green:hover,
+  .btn-primary-blue:hover {
+    background: linear-gradient(135deg, #0369A1 0%, #0284C7 100%);
+    box-shadow: 0 6px 20px 0 rgba(2, 132, 199, 0.35);
+    transform: translateY(-1px);
   }
 
-  .btn-outline-green {
+  .btn-outline-green,
+  .btn-outline-blue {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 8px 16px;
-    border: 1px solid #28A71A;
-    color: #28A71A;
+    padding: 8px 18px;
+    border: 1.5px solid #0284C7;
+    color: #0284C7;
+    background-color: transparent;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
 
-  .btn-outline-green:hover {
-    background-color: #28A71A;
+  .btn-outline-green:hover,
+  .btn-outline-blue:hover {
+    background-color: #0284C7;
     color: #FFFFFF;
+    box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.25);
   }
 
   /* ---- Badges ---- */
-  .badge-green {
+  .badge-green,
+  .badge-blue {
     display: inline-flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 6px 16px;
     gap: 4px;
-    background: #E6F9F0;
+    background: #E0F2FE;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: #006844;
+    color: #0369A1;
   }
 
   .badge-xs {
@@ -194,13 +205,14 @@
     align-items: center;
     padding: 2px 8px;
     gap: 4px;
-    background: #EAF6E8;
+    background: #F0F9FF;
+    border: 1px solid #BAE6FD;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     font-size: 10px;
     line-height: 16px;
-    color: #1C7712;
+    color: #0284C7;
   }
 
   .badge-sm {
@@ -210,13 +222,13 @@
     align-items: center;
     padding: 4px 12px;
     gap: 4px;
-    background: #F0F4F8;
+    background: #F1F5F9;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    color: #444444;
+    color: #334155;
   }
 
   .badge-musholla {
@@ -226,13 +238,13 @@
     align-items: center;
     padding: 2px 8px;
     gap: 4px;
-    background: #EAF2FF;
+    background: #E0F2FE;
     border-radius: 99px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     font-size: 10px;
     line-height: 16px;
-    color: #1A5CC4;
+    color: #0284C7;
   }
 
   /* ---- Cards ---- */
@@ -248,14 +260,16 @@
     background: #FFFFFF;
   }
 
-  .info-card-green {
+  .info-card-green,
+  .info-card-blue {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 24px 16px;
     gap: 16px;
-    background: #EAF6E8;
+    background: #F0F9FF;
+    border: 1px solid #BAE6FD;
     border-radius: 16px;
   }
 
@@ -267,19 +281,29 @@
     padding: 24px 16px;
     gap: 16px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.15);
     border-radius: 16px;
   }
 
-  .masjid-card {
+  .masjid-card,
+  .sekolah-card,
+  .upz-card {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 16px;
     gap: 16px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+  }
+
+  .masjid-card:hover,
+  .sekolah-card:hover,
+  .upz-card:hover {
+    border-color: #38BDF8;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
   }
 
   .publication-card {
@@ -289,7 +313,7 @@
     padding: 24px;
     gap: 16px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.15);
     border-radius: 16px;
   }
 
@@ -300,7 +324,7 @@
     padding: 24px;
     gap: 8px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.15);
     border-radius: 16px;
   }
 
@@ -312,7 +336,7 @@
     padding: 24px 16px;
     gap: 16px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.15);
     border-radius: 16px;
   }
 
@@ -326,9 +350,11 @@
     gap: 10px;
     width: 44px;
     height: 44px;
-    background: #28A71A;
+    background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
+    color: #FFFFFF;
     border-radius: 99px;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
   }
 
   .icon-boxed-outline {
@@ -340,8 +366,9 @@
     gap: 10px;
     width: 44px;
     height: 44px;
-    background: #EAF6E8;
-    border: 1px solid #F0F4F8;
+    background: #F0F9FF;
+    border: 1px solid #BAE6FD;
+    color: #0284C7;
     border-radius: 99px;
     flex-shrink: 0;
   }
@@ -359,14 +386,14 @@
     font-weight: 500;
     line-height: 72px;
     letter-spacing: -0.02em;
-    color: #303030;
+    color: #0F172A;
     margin-bottom: 16px;
   }
 
   .hero-section p {
     font-size: 18px;
     line-height: 28px;
-    color: #555555;
+    color: #475569;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -382,15 +409,17 @@
   }
 
   /* ---- Effects ---- */
-  .text-gradient-green {
-    background: linear-gradient(90deg, #1C7712 0%, #6FC466 100%);
+  .text-gradient-green,
+  .text-gradient-blue {
+    background: linear-gradient(90deg, #0284C7 0%, #38BDF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .text-gradient-green::selection {
-    -webkit-text-fill-color: #303030;
+  .text-gradient-green::selection,
+  .text-gradient-blue::selection {
+    -webkit-text-fill-color: #0F172A;
   }
 
   /* Consistent Page Title */
@@ -400,11 +429,11 @@
     font-size: 60px;
     line-height: 72px;
     letter-spacing: -0.02em;
-    color: #303030;
+    color: #0F172A;
   }
 
   .page-title .highlight {
-    background: linear-gradient(90deg, #1C7712 0%, #6FC466 100%);
+    background: linear-gradient(90deg, #0284C7 0%, #38BDF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

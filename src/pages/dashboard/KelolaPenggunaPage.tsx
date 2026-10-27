@@ -5,7 +5,7 @@ import {
   Loader2,
   ShieldCheck,
   UserRound,
-  Building2,
+  GraduationCap,
   CheckCircle2,
   XCircle,
   Ban,
@@ -30,7 +30,7 @@ const SCOPED_ADMIN_LEVELS = [11, 12, 13];
 
 const LEVEL_LABEL: Record<number, string> = {
   1: 'Admin BAZNAS',
-  2: 'Admin Masjid',
+  2: 'Admin UPZ Sekolah',
   3: 'Pengguna',
   11: 'Admin Daerah',
   12: 'Admin Kab',
@@ -39,12 +39,13 @@ const LEVEL_LABEL: Record<number, string> = {
 
 const LEVEL_BADGE: Record<number, string> = {
   1: 'bg-[#F3E8FF] text-[#7C3AED]',
-  2: 'bg-[#E6F9F0] text-[#006844]',
+  2: 'bg-[#E0F2FE] text-[#0284C7]',
   3: 'bg-[#EAF2FF] text-[#2B7FFF]',
   11: 'bg-[#E0F2FE] text-[#0369A1]',
   12: 'bg-[#FEF3C7] text-[#B45309]',
   13: 'bg-[#FCE7F3] text-[#BE185D]',
 };
+
 
 function matchesLevelFilter(user: UserListItem, filter: LevelFilter): boolean {
   if (filter === 'all') return true;
@@ -325,70 +326,70 @@ export default function KelolaPenggunaPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-4 sm:p-6">
+      <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-6 shadow-xs">
         <div className="flex items-start sm:items-center justify-between flex-col sm:flex-row gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-              <UserCog size={20} className="text-[#28A71A]" />
+            <div className="w-10 h-10 bg-[#E0F2FE] rounded-xl flex items-center justify-center">
+              <UserCog size={20} className="text-[#0284C7]" />
             </div>
             <div>
               <h2
-                className="text-lg font-semibold text-[#303030]"
+                className="text-lg font-bold text-slate-800"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Kelola Pengguna
               </h2>
               <p
-                className="text-sm text-text-gray"
+                className="text-sm text-slate-500"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                Atur level akses akun — kelola Admin Masjid dan akun pengguna
+                Atur level akses akun — kelola Admin UPZ Sekolah, pengawas wilayah, dan akun pengguna
               </p>
             </div>
           </div>
           <button
             onClick={loadData}
             disabled={loading}
-            className="text-sm text-[#28A71A] hover:text-[#1C7712] transition-colors flex items-center gap-1"
+            className="text-sm text-[#0284C7] hover:text-[#0369A1] font-semibold transition-colors flex items-center gap-1.5"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
-            Refresh
+            Muat Ulang
           </button>
         </div>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl p-4 border border-[rgba(0,0,0,0.08)]">
-          <p className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+          <p className="text-xs text-slate-500 font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Total Pengguna
           </p>
-          <p className="text-2xl font-semibold text-[#303030] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <p className="text-2xl font-bold text-slate-800 mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {counts.total}
           </p>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-[rgba(0,0,0,0.08)]">
-          <p className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Admin Masjid
+        <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+          <p className="text-xs text-slate-500 font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Admin UPZ Sekolah
           </p>
-          <p className="text-2xl font-semibold text-[#006844] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <p className="text-2xl font-bold text-[#0284C7] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {counts.adminMasjid}
           </p>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-[rgba(0,0,0,0.08)]">
-          <p className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Pengguna
+        <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+          <p className="text-xs text-slate-500 font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Pengguna Biasa
           </p>
-          <p className="text-2xl font-semibold text-[#2B7FFF] mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <p className="text-2xl font-bold text-slate-700 mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {counts.pengguna}
           </p>
         </div>
-        <div className="bg-white rounded-xl p-4 border border-[rgba(0,0,0,0.08)]">
-          <p className="text-xs text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+          <p className="text-xs text-slate-500 font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Akun Nonaktif
           </p>
-          <p className="text-2xl font-semibold text-red-500 mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <p className="text-2xl font-bold text-rose-500 mt-1" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {counts.nonaktif}
           </p>
         </div>
@@ -397,28 +398,28 @@ export default function KelolaPenggunaPage() {
       {/* Filter & Search */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Cari nama, email, no HP, atau nama masjid..."
-            className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+            placeholder="Cari nama, email, no HP, atau nama UPZ sekolah..."
+            className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           />
         </div>
         <select
           value={levelFilter}
           onChange={(e) => setLevelFilter(e.target.value as LevelFilter)}
-          className="px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+          className="px-4 py-2.5 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           <option value="all">Semua Level</option>
           <option value="admin-baznas">Admin BAZNAS</option>
-          <option value="admin-masjid">Admin Masjid</option>
+          <option value="admin-masjid">Admin UPZ Sekolah</option>
           <option value="admin-daerah">Admin Daerah</option>
           <option value="admin-kab">Admin Kab</option>
-          <option value="admin-kua">Admin KUA</option>
+          <option value="admin-kua">Admin Pengawas/KUA</option>
           <option value="pengguna">Pengguna</option>
         </select>
         {/* Region filters */}
@@ -426,7 +427,8 @@ export default function KelolaPenggunaPage() {
           <select
             value={provinsiFilter}
             onChange={(e) => setProvinsiFilter(e.target.value)}
-            className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none"
+            className="w-full pl-4 pr-8 py-2.5 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none"
+
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <option value="">Semua Provinsi</option>
@@ -443,7 +445,7 @@ export default function KelolaPenggunaPage() {
             value={kabFilter}
             onChange={(e) => setKabFilter(e.target.value)}
             disabled={!provinsiFilter}
-            className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
+            className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             <option value="">Semua Kab/Kota</option>
@@ -461,7 +463,7 @@ export default function KelolaPenggunaPage() {
       <div className="bg-white rounded-xl border border-[#F0F4F8] overflow-hidden">
         {loading ? (
           <div className="p-12 text-center">
-            <Loader2 size={24} className="animate-spin text-[#28A71A] mx-auto mb-2" />
+            <Loader2 size={24} className="animate-spin text-[#0284C7] mx-auto mb-2" />
             <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               Memuat data...
             </p>
@@ -515,7 +517,7 @@ export default function KelolaPenggunaPage() {
                               isAdminBaznas
                                 ? 'bg-[#7C3AED]'
                                 : isAdminMasjid
-                                  ? 'bg-[#006844]'
+                                  ? 'bg-[#0284C7]'
                                   : isScopedAdmin
                                     ? 'bg-[#0369A1]'
                                     : 'bg-[#2B7FFF]'
@@ -537,7 +539,7 @@ export default function KelolaPenggunaPage() {
                       <td className="px-4 py-3 hidden md:table-cell">
                         {user.nama_masjid ? (
                           <span className="text-sm text-text-gray flex items-center gap-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                            <Building2 size={14} className="text-[#28A71A] flex-shrink-0" />
+                            <GraduationCap size={15} className="text-[#0284C7] flex-shrink-0" />
                             <span className="truncate max-w-[180px]">{user.nama_masjid}</span>
                           </span>
                         ) : (
@@ -557,7 +559,7 @@ export default function KelolaPenggunaPage() {
                       <td className="px-4 py-3 hidden sm:table-cell">
                         <span
                           className={`inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full ${
-                            active ? 'bg-[#E6F9F0] text-[#006844]' : 'bg-red-50 text-red-600'
+                            active ? 'bg-[#E0F2FE] text-[#0369A1]' : 'bg-red-50 text-red-600'
                           }`}
                           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                         >
@@ -584,18 +586,18 @@ export default function KelolaPenggunaPage() {
                                       }))
                                     }
                                     disabled={busy}
-                                    className="px-2 py-1.5 border border-[#D4D4D4] rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                                    className="px-2 py-1.5 border border-[#D4D4D4] rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
                                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                                   >
-                                    <option value={2}>Admin Masjid</option>
+                                    <option value={2}>Admin UPZ Sekolah</option>
                                     <option value={11}>Admin Daerah</option>
                                     <option value={12}>Admin Kab</option>
-                                    <option value={13}>Admin KUA</option>
+                                    <option value={13}>Admin Pengawas/KUA</option>
                                   </select>
                                   <button
                                     onClick={() => openPromoteModal(user, promoteRoleChoice[user.id_user] ?? 2)}
                                     disabled={busy}
-                                    className="flex items-center gap-1.5 px-3 py-1.5 bg-[#28A71A] hover:bg-[#1C7712] disabled:bg-[#B0B0B0] text-white rounded-lg text-xs font-medium transition-colors"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0284C7] hover:bg-[#0369A1] disabled:bg-[#B0B0B0] text-white rounded-lg text-xs font-medium transition-colors"
                                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                                   >
                                     <ShieldCheck size={14} />
@@ -621,16 +623,17 @@ export default function KelolaPenggunaPage() {
                                 className={`p-1.5 rounded-lg transition-colors disabled:opacity-50 ${
                                   active
                                     ? 'text-red-500 hover:bg-red-50'
-                                    : 'text-[#28A71A] hover:bg-[#EAF6E8]'
+                                    : 'text-[#0284C7] hover:bg-[#E0F2FE]'
                                 }`}
                               >
                                 <Ban size={16} />
                               </button>
                             </>
                           )}
-                          {busy && <Loader2 size={14} className="animate-spin text-[#28A71A]" />}
+                          {busy && <Loader2 size={14} className="animate-spin text-[#0284C7]" />}
                         </div>
                       </td>
+
                     </tr>
                   );
                 })}
@@ -646,8 +649,8 @@ export default function KelolaPenggunaPage() {
           <div className="absolute inset-0 bg-black/50" onClick={() => !promoteLoading && setPromoteTarget(null)} />
           <div className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-[#E6F9F0] rounded-xl flex items-center justify-center">
-                <ShieldCheck size={20} className="text-[#006844]" />
+              <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+                <ShieldCheck size={20} className="text-[#0284C7]" />
               </div>
               <div>
                 <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -665,18 +668,18 @@ export default function KelolaPenggunaPage() {
                   className="block text-sm font-medium text-[#303030] mb-2"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  Pilih Masjid yang Dikelola
+                  Pilih UPZ Sekolah yang Dikelola
                 </label>
                 <div className="relative">
-                  <Building2 size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                  <GraduationCap size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
                   <select
                     value={selectedMasjid}
                     onChange={(e) => setSelectedMasjid(e.target.value)}
                     disabled={promoteLoading}
-                    className="w-full pl-10 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none"
+                    className="w-full pl-10 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
-                    <option value="">— Pilih masjid —</option>
+                    <option value="">— Pilih UPZ Sekolah —</option>
                     {masjids.map((m) => (
                       <option key={m.id_masjid} value={m.id_masjid}>
                         {m.nama_masjid}
@@ -688,7 +691,7 @@ export default function KelolaPenggunaPage() {
                 </div>
                 {masjids.length === 0 && (
                   <p className="text-xs text-amber-600 mt-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                    Belum ada data masjid terdaftar. Tambahkan masjid dulu di Data Masjid.
+                    Belum ada data UPZ Sekolah terdaftar. Tambahkan UPZ Sekolah dulu di Data UPZ Sekolah.
                   </p>
                 )}
               </>
@@ -706,7 +709,7 @@ export default function KelolaPenggunaPage() {
                       value={modalProvinsi}
                       onChange={(e) => setModalProvinsi(e.target.value)}
                       disabled={promoteLoading}
-                      className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none"
+                      className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none"
                       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                       <option value="">— Pilih provinsi —</option>
@@ -733,7 +736,7 @@ export default function KelolaPenggunaPage() {
                         value={modalKab}
                         onChange={(e) => setModalKab(e.target.value)}
                         disabled={promoteLoading || !modalProvinsi}
-                        className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
+                        className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
                         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                       >
                         <option value="">— Pilih kabupaten/kota —</option>
@@ -761,7 +764,7 @@ export default function KelolaPenggunaPage() {
                         value={modalKec}
                         onChange={(e) => setModalKec(e.target.value)}
                         disabled={promoteLoading || !modalKab}
-                        className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
+                        className="w-full pl-4 pr-8 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 appearance-none disabled:opacity-50 disabled:bg-[#F5F5F5]"
                         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                       >
                         <option value="">— Pilih kecamatan —</option>
@@ -790,7 +793,7 @@ export default function KelolaPenggunaPage() {
               <button
                 onClick={handlePromote}
                 disabled={promoteLoading}
-                className="flex-1 py-2.5 bg-[#28A71A] hover:bg-[#1C7712] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 bg-[#0284C7] hover:bg-[#0369A1] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {promoteLoading ? <Loader2 size={16} className="animate-spin" /> : <ShieldCheck size={16} />}

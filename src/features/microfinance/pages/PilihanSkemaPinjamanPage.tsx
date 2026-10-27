@@ -74,7 +74,7 @@ export default function PilihanSkemaPinjamanPage() {
     <div className="space-y-6">
       <Link
         to="/microfinance"
-        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#28A71A] transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#0284C7] transition-colors"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         <ArrowLeft size={16} />
@@ -82,8 +82,8 @@ export default function PilihanSkemaPinjamanPage() {
       </Link>
 
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <HandCoins size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <HandCoins size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Pilihan Jumlah Pinjaman</h1>
@@ -103,22 +103,22 @@ export default function PilihanSkemaPinjamanPage() {
                 <label className="block text-sm font-medium text-[#303030] mb-1.5">Nama Pilihan Pinjaman</label>
                 <input value={formData.nama_pilihan_skema_pinjaman || ''} onChange={(e) => setFormData({ ...formData, nama_pilihan_skema_pinjaman: e.target.value })}
                   placeholder="mis. Pinjaman Kecil, Pinjaman Sedang"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1.5">Jumlah Nominal (maks {formatRupiah(MAX_NOMINAL)})</label>
                 <input type="number" max={MAX_NOMINAL} value={formData.jumlah_nominal || ''} onChange={(e) => setFormData({ ...formData, jumlah_nominal: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#303030] mb-1.5">Keterangan (opsional)</label>
                 <textarea value={formData.keterangan || ''} onChange={(e) => setFormData({ ...formData, keterangan: e.target.value })} rows={3}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] resize-none" />
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] resize-none" />
               </div>
             </div>
             <div className="flex gap-3 mt-6 justify-end">
               <button onClick={() => setShowForm(false)} className="px-4 py-2 border border-[rgba(0,0,0,0.15)] rounded-xl text-sm text-[#303030] hover:bg-[#F0F4F8]">Batal</button>
-              <button onClick={handleSubmit} className="btn-primary-green rounded-xl"><Plus size={16} />{editItem ? 'Simpan' : 'Tambah'}</button>
+              <button onClick={handleSubmit} className="btn-primary-blue rounded-xl"><Plus size={16} />{editItem ? 'Simpan' : 'Tambah'}</button>
             </div>
           </div>
         </div>

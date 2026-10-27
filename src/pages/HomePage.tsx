@@ -1,107 +1,108 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Building2, Users, Download, ArrowRight, Eye, Heart, Calendar, Clock, MessageCircle, BookOpen, DownloadCloud, HelpCircle, Share2 } from 'lucide-react';
+import { Building2, Users, ArrowRight, Eye, Heart, Calendar, Clock, MessageCircle, BookOpen, HelpCircle, Share2, GraduationCap, Coins, Award, DownloadCloud, Download } from 'lucide-react';
 import MapSection from '../components/home/MapSection';
+import bannerHero from '../assets/illustrations/bannerHomepage.jpg';
 
 const infoStats = [
   {
-    icon: <Building2 size={22} />,
-    title: '9,588',
-    subtitle: 'Masjid terdaftar',
-    bgGreen: true,
+    icon: <GraduationCap size={22} />,
+    title: '3,850+',
+    subtitle: 'UPZ Sekolah terdaftar',
+    bgBlue: true,
   },
   {
-    icon: <MapPin size={22} />,
-    title: '1,657',
-    subtitle: 'Musholla terdaftar',
-    bgGreen: false,
-  },
-  {
-    icon: <Users size={22} />,
-    title: '15,000++',
-    subtitle: 'Pengguna terdaftar',
-    bgGreen: false,
+    icon: <Award size={22} />,
+    title: '18,400+',
+    subtitle: 'Siswa penerima manfaat',
+    bgBlue: false,
   },
   {
     icon: <Users size={22} />,
-    title: '10,000+',
-    subtitle: 'Pengurus masjid',
-    bgGreen: false,
+    title: '25,000+',
+    subtitle: 'Guru & Muzakki terdaftar',
+    bgBlue: false,
+  },
+  {
+    icon: <Coins size={22} />,
+    title: 'Rp 4.2 M+',
+    subtitle: 'Dana ZIS terhimpun',
+    bgBlue: false,
   },
 ];
 
-// masjid data moved to MapSection component
-
 const publikasiData = [
-  { title: 'Donasi Buku untuk Anak-Anak Penyintas Tsunami', description: 'Mari ikut serta menyebarkan ilmu dengan mendukung program wakaf buku.', category: 'Artikel', date: '15 Januari 2025', readTime: '5 menit', views: '1,234', likes: '50', image: '📚' },
-  { title: 'Donasi Buku untuk Anak-Anak Penyintas Tsunami', description: 'Mari ikut serta menyebarkan ilmu dengan mendukung program wakaf buku.', category: 'Zakat', date: '15 Januari 2025', readTime: '5 menit', views: '1,234', likes: '50', image: '📖' },
-  { title: 'Donasi Buku untuk Anak-Anak Penyintas Tsunami', description: 'Mari ikut serta menyebarkan ilmu dengan mendukung program wakaf buku.', category: 'Infak', date: '15 Januari 2025', readTime: '5 menit', views: '1,234', likes: '50', image: '📋' },
+  { title: 'Penyaluran Beasiswa BAZNAS untuk 120 Siswa Berprestasi', description: 'Program kolaborasi UPZ Sekolah bersama BAZNAS Daerah guna mendukung kelanjutan studi pelajar berprestasi.', category: 'Beasiswa', date: '15 Januari 2026', readTime: '4 menit', views: '1,420', likes: '88', image: '🎓' },
+  { title: 'Gerakan Infak Jumat Berkah: Renovasi Fasilitas Belajar', description: 'Pengelolaan dana infak siswa dan guru untuk melengkapi ruang komputer dan perpustakaan sekolah.', category: 'Infak Sekolah', date: '10 Januari 2026', readTime: '5 menit', views: '980', likes: '64', image: '📚' },
+  { title: 'Edukasi Literasi ZIS Sejak Dini di Lingkungan Sekolah', description: 'Menanamkan karakter peduli sesama melalui pembelajaran zakat praktis bagi siswa SD, SMP, hingga SMA.', category: 'Artikel', date: '05 Januari 2026', readTime: '3 menit', views: '1,150', likes: '72', image: '📖' },
 ];
 
 const testimoniData = [
-  { comment: 'Aplikasi ini sangat membantu kami dalam mengelola dana masjid. Sekarang laporan keuangan lebih rapi dan transparan.', author: 'H. Ahmad Syarif', rating: 5 },
-  { comment: 'Dengan MENARA, pencatatan zakat jadi lebih mudah. Warga juga bisa melihat laporan secara real-time.', author: 'Ustadz Faisal Rahman', rating: 5 },
-  { comment: 'Fitur pencarian masjid sangat membantu. Saya jadi mudah menemukan masjid terdekat saat bepergian.', author: 'Aisyah Putri', rating: 5 },
+  { comment: 'Aplikasi UPZ Sekolah sangat memudahkan kami dalam pembukuan infak Jumat dan zakat fitrah sekolah. Laporan ke BAZNAS jadi otomatis dan transparan.', author: 'Drs. H. Mulyono (Kepala Sekolah SMAN 1)', rating: 5 },
+  { comment: 'Penyaluran beasiswa bagi siswa kurang mampu jadi tepat sasaran berkat pendataan terverifikasi sistem UPZ Sekolah BAZNAS.', author: 'Ustadzah Nurul Hidayah (Ketua UPZ MAN 1)', rating: 5 },
+  { comment: 'Orang tua siswa dapat memantau peruntukan dana infak secara terbuka. Sangat menginspirasi dan meningkatkan kepercayaan masyarakat.', author: 'Ahmad Fauzi (Komite Sekolah)', rating: 5 },
 ];
 
 const quickAccessData = [
-  { icon: (<svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M0 0V20H24V0H0ZM22 2V4H2V2H22ZM2 18V6H22V18H2Z" fill="#28A71A"/><path d="M5 8H9V12H5V8ZM11 8H15V12H11V8ZM17 8H19V12H17V8ZM5 13H9V17H5V13ZM11 13H15V17H11V13ZM17 13H19V17H17V13Z" fill="#28A71A"/></svg>), title: 'Data Masjid', subtitle: 'Lihat data masjid', buttonText: 'Selengkapnya' },
-  { icon: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#28A71A" strokeWidth="1.5"/><path d="M12 7V12L15 15" stroke="#28A71A" strokeWidth="1.5" strokeLinecap="round"/></svg>), title: 'History Transaksi', subtitle: 'Lihat riwayat transaksi', buttonText: 'Selengkapnya' },
-  { icon: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H12" stroke="#28A71A" strokeWidth="1.5" strokeLinecap="round"/></svg>), title: 'Publikasi', subtitle: 'Baca artikel terbaru', buttonText: 'Selengkapnya' },
-  { icon: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#28A71A" strokeWidth="1.5"/><path d="M12 7V12L15 15" stroke="#28A71A" strokeWidth="1.5" strokeLinecap="round"/></svg>), title: 'Doa & Amalan', subtitle: 'Kumpulan doa harian', buttonText: 'Selengkapnya' },
+  { icon: (<GraduationCap size={24} className="text-sky-600" />), title: 'Direktori UPZ Sekolah', subtitle: 'Cari profil & data sekolah', buttonText: 'Selengkapnya', link: '/masjid' },
+  { icon: (<Coins size={24} className="text-sky-600" />), title: 'Buku Kas ZIS', subtitle: 'Transparansi dana sekolah', buttonText: 'Selengkapnya', link: '/login' },
+  { icon: (<BookOpen size={24} className="text-sky-600" />), title: 'Publikasi & Kajian', subtitle: 'Kabar kegiatan & materi', buttonText: 'Selengkapnya', link: '/kajian' },
+  { icon: (<Building2 size={24} className="text-sky-600" />), title: 'Ajukan UPZ Baru', subtitle: 'Pendaftaran sekolah binaan', buttonText: 'Selengkapnya', link: '/ajukan-masjid' },
 ];
 
-const filterKategori = ['Semua', 'Zakat', 'Infak', 'Sedekah', 'Kajian', 'Berita', 'Artikel', 'Pengumuman', 'Lainnya'];
+const filterKategori = ['Semua', 'Beasiswa', 'Zakat Sekolah', 'Infak Jumat', 'Kegiatan', 'Artikel', 'Pengumuman'];
 
 export default function HomePage() {
   return (
-    <div className="bg-[#FAFAFA]">
+    <div className="bg-[#F8FAFC]">
       {/* ============================== */}
       {/* HERO SECTION */}
       {/* ============================== */}
       <section className="section-padding pt-[60px]">
-        <div className="content-width flex flex-row justify-center items-start gap-10 max-lg:flex-col max-lg:items-center">
+        <div className="content-width flex flex-row justify-center items-start gap-12 max-lg:flex-col max-lg:items-center">
           {/* Hero Text */}
           <div className="flex flex-col justify-center items-start gap-6 lg:w-[640px] max-lg:w-full">
             {/* Badge */}
-            <div className="badge-green">
-              <Building2 size={14} />
-              <span>Platform Digital Masjid Indonesia</span>
+            <div className="badge-blue">
+              <GraduationCap size={15} />
+              <span>Platform Digital UPZ Sekolah BAZNAS</span>
             </div>
 
             {/* Heading */}
-            <h1 className="text-display-xl max-md:text-[36px] max-md:leading-[44px]">
-              Dari Masjid,{' '}
-              <span className="text-gradient-green">Tumbuh Kebaikan</span>{' '}
-              Tanpa Batas
+            <h1 className="text-display-xl max-md:text-[34px] max-md:leading-[42px] text-slate-800">
+              Dari Sekolah,{' '}
+              <span className="text-gradient-blue">Tumbuh Kebaikan & Prestasi</span>{' '}
+              Generasi Bangsa
             </h1>
 
             {/* Sub Heading */}
-            <p className="text-base leading-6 text-[#303030] max-w-[640px] max-md:text-sm">
-              Platform digital untuk menghubungkan seluruh masjid dan musholla 
-              di Indonesia melalui teknologi modern. Kelola, pantau, dan 
-              kembangkan masjid Anda bersama MENARA.
+            <p className="text-base leading-6 text-slate-600 max-w-[620px] max-md:text-sm">
+              Platform digital terintegrasi untuk pengelolaan Unit Pengumpul Zakat (UPZ) berbasis sekolah
+              di seluruh Indonesia bersama BAZNAS RI. Wujudkan tata kelola ZIS DSKL yang transparan,
+              profesional, dan berdaya guna bagi pendidikan umat.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-row items-center gap-6 max-md:flex-col max-md:w-full">
-              <Link to="#" className="btn-primary-green gap-2 max-md:w-full max-md:justify-center">
-                <Download size={18} />
-                Download Aplikasi
+            <div className="flex flex-row items-center gap-4 max-md:flex-col max-md:w-full">
+              <Link to="/ajukan-masjid" className="btn-primary-blue gap-2 py-3 px-6 text-sm font-semibold max-md:w-full max-md:justify-center">
+                <GraduationCap size={18} />
+                Daftar UPZ Sekolah
               </Link>
-              <Link to="/masjid" className="btn-outline-green gap-2 max-md:w-full max-md:justify-center">
-                Jelajahi Masjid
+              <Link to="/masjid" className="btn-outline-blue gap-2 py-3 px-6 text-sm font-semibold max-md:w-full max-md:justify-center">
+                Jelajahi Direktori
                 <ArrowRight size={18} />
               </Link>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="w-[520px] h-[332px] flex-shrink-0 max-lg:w-full max-lg:h-auto max-lg:aspect-[520/332] overflow-hidden">
+          {/* Hero Banner */}
+          <div className="w-[500px] h-[340px] flex-shrink-0 max-lg:w-full max-lg:h-auto max-lg:aspect-[500/340] rounded-3xl overflow-hidden shadow-2xl shadow-sky-500/15 border-2 border-white ring-1 ring-sky-100 relative group">
             <img
-              src="/images/banner-hero.svg"
-              alt="Platform Digital Masjid Indonesia"
-              className="w-full h-full object-cover"
+              src={bannerHero}
+              alt="Ilustrasi UPZ Sekolah BAZNAS"
+              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
+            {/* Ambient decorative subtle gradient & badge overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
 
@@ -110,31 +111,27 @@ export default function HomePage() {
           {infoStats.map((item, index) => (
             <div
               key={index}
-              className={`${
-                item.bgGreen
-                  ? 'bg-gradient-to-br from-[#28A71A] to-[#1f8a13] text-white'
-                  : 'bg-white border border-[rgba(0,0,0,0.06)]'
-              } rounded-2xl p-5 flex flex-col items-start gap-2 transition-all hover:shadow-md`}
+              className={`${item.bgBlue
+                ? 'bg-gradient-to-br from-sky-600 to-sky-700 text-white shadow-lg shadow-sky-600/20'
+                : 'bg-white border border-slate-200/80 shadow-sm'
+                } rounded-2xl p-5 flex flex-col items-start gap-2 transition-all hover:-translate-y-0.5 hover:shadow-md`}
             >
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  item.bgGreen ? 'bg-white/20 text-white' : 'bg-[#E6F9F0] text-[#28A71A]'
-                }`}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.bgBlue ? 'bg-white/20 text-white' : 'bg-sky-50 text-sky-600'
+                  }`}
               >
                 {item.icon}
               </div>
               <span
-                className={`text-2xl font-bold ${
-                  item.bgGreen ? 'text-white' : 'text-[#303030]'
-                }`}
+                className={`text-2xl font-bold ${item.bgBlue ? 'text-white' : 'text-slate-800'
+                  }`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {item.title}
               </span>
               <span
-                className={`text-sm ${
-                  item.bgGreen ? 'text-white/80' : 'text-[#666]'
-                }`}
+                className={`text-sm ${item.bgBlue ? 'text-sky-100' : 'text-slate-500'
+                  }`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 {item.subtitle}
@@ -152,23 +149,22 @@ export default function HomePage() {
       {/* ============================== */}
       <section className="section-padding py-[60px]">
         <div className="content-width">
-          <div className="flex flex-col justify-center items-start gap-6 mb-10">
-            <div className="badge-green">
+          <div className="flex flex-col justify-center items-start gap-5 mb-10">
+            <div className="badge-blue">
               <BookOpen size={14} />
-              <span>Publikasi</span>
+              <span>Publikasi & Edukasi</span>
             </div>
-            <h2 className="text-display-lg text-gradient-green max-md:text-[32px] max-md:leading-[40px]">
-              Cerita & Kabar dari Masjid
+            <h2 className="text-display-lg text-slate-800 max-md:text-[30px] max-md:leading-[38px]">
+              Cerita & Kabar dari <span className="text-gradient-blue">UPZ Sekolah</span>
             </h2>
 
             {/* Filter buttons */}
-            <div className="flex flex-row items-start gap-4 overflow-x-auto w-full pb-1">
+            <div className="flex flex-row items-start gap-2.5 overflow-x-auto w-full pb-1">
               {filterKategori.map((k, i) => (
                 <button
                   key={i}
-                  className={`text-sm font-medium leading-5 px-4 py-2 rounded-full whitespace-nowrap transition-all ${
-                    i === 0 ? 'bg-[#28A71A] text-white' : 'border border-[#28A71A] text-[#28A71A] hover:bg-[#EAF6E8]'
-                  }`}
+                  className={`text-sm font-medium leading-5 px-4 py-2 rounded-full whitespace-nowrap transition-all ${i === 0 ? 'bg-sky-600 text-white shadow-sm shadow-sky-600/20' : 'border border-slate-200 text-slate-600 hover:border-sky-500 hover:text-sky-600 hover:bg-sky-50'
+                    }`}
                 >
                   {k}
                 </button>
@@ -179,47 +175,47 @@ export default function HomePage() {
           {/* Publikasi Cards */}
           <div className="flex flex-row items-stretch gap-6 max-lg:flex-col">
             {publikasiData.map((pub, index) => (
-              <div key={index} className="publication-card flex-1">
-                <div className="w-full h-[160px] bg-gradient-to-br from-[#E6F9F0] to-[#EAF6E8] rounded-lg flex items-center justify-center text-5xl">
+              <div key={index} className="publication-card flex-1 bg-white border border-sky-100/80 shadow-sm rounded-2xl hover:shadow-md transition-shadow">
+                <div className="w-full h-[150px] bg-gradient-to-br from-sky-50 to-sky-100/60 rounded-xl flex items-center justify-center text-5xl">
                   {pub.image}
                 </div>
-                <div className="flex flex-col items-start gap-1.5 w-full">
+                <div className="flex flex-col items-start gap-1.5 w-full mt-2">
                   <div className="badge-xs">{pub.category}</div>
-                  <span className="text-base font-medium leading-6 text-[#303030]">{pub.title}</span>
-                  <span className="text-sm leading-5 text-[#888]">{pub.description}</span>
+                  <span className="text-base font-bold leading-snug text-slate-800 line-clamp-2">{pub.title}</span>
+                  <span className="text-sm leading-relaxed text-slate-500 line-clamp-2">{pub.description}</span>
                 </div>
-                <div className="flex flex-row items-start gap-4 w-full">
-                  <div className="flex items-center gap-2 flex-1">
-                    <Calendar size={14} className="text-[#888]" />
-                    <span className="text-xs leading-[18px] text-[#888]">{pub.date}</span>
+                <div className="flex flex-row items-start gap-4 w-full mt-2 text-slate-400">
+                  <div className="flex items-center gap-1.5 flex-1">
+                    <Calendar size={13} />
+                    <span className="text-xs leading-[18px]">{pub.date}</span>
                   </div>
-                  <div className="flex items-center gap-2 flex-1">
-                    <Clock size={14} className="text-[#888]" />
-                    <span className="text-xs leading-[18px] text-[#888]">{pub.readTime}</span>
+                  <div className="flex items-center gap-1.5 flex-1">
+                    <Clock size={13} />
+                    <span className="text-xs leading-[18px]">{pub.readTime}</span>
                   </div>
                 </div>
-                <div className="w-full border-t border-[rgba(0,0,0,0.1)]" />
-                <div className="flex justify-between items-center w-full">
-                  <div className="flex items-start gap-6">
-                    <div className="flex items-center gap-2">
-                      <Eye size={16} className="text-[#888]" />
-                      <span className="text-sm leading-5 text-[#888]">{pub.views}</span>
+                <div className="w-full border-t border-slate-100 my-2" />
+                <div className="flex justify-between items-center w-full text-slate-400">
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-1.5">
+                      <Eye size={15} />
+                      <span className="text-xs">{pub.views}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Heart size={14} className="text-[#888]" />
-                      <span className="text-sm leading-5 text-[#888]">{pub.likes}</span>
+                    <div className="flex items-center gap-1.5">
+                      <Heart size={14} className="hover:text-rose-500 cursor-pointer" />
+                      <span className="text-xs">{pub.likes}</span>
                     </div>
                   </div>
-                  <Share2 size={14} className="text-[#888]" />
+                  <Share2 size={14} className="hover:text-sky-600 cursor-pointer" />
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex justify-end mt-4">
-            <Link to="/kajian" className="btn-primary-green gap-2">
+          <div className="flex justify-end mt-6">
+            <Link to="/kajian" className="btn-primary-blue gap-2 py-2.5 px-5 text-sm font-semibold">
               Lihat Semua Publikasi
-              <ArrowRight size={18} />
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -231,66 +227,35 @@ export default function HomePage() {
       <section className="section-padding py-10">
         <div className="content-width flex flex-col justify-center items-center gap-[27px]">
           <div className="flex flex-col justify-center items-center gap-4 w-full">
-            <div className="badge-green">
+            <div className="badge-blue">
               <DownloadCloud size={14} />
               <span>Download APK</span>
             </div>
             <h2 className="text-display-lg text-center text-[#303030] max-md:text-[28px] max-md:leading-[36px]">
-              Download Aplikasi Menara Masjid
+              Download Aplikasi UPZ Sekolah
             </h2>
             <p className="text-base leading-6 text-center text-[#303030] max-md:text-sm">
-              Unduh aplikasi kami dan nikmati kemudahan dalam mengelola masjid.
+              Unduh aplikasi kami dan nikmati kemudahan dalam mengelola UPZ Sekolah.
             </p>
 
             <div className="flex flex-row justify-center items-center gap-6 max-md:flex-col">
-              <a href="#" className="btn-primary-green gap-2">
+              <a href="#" className="btn-primary-blue gap-2">
                 <Download size={18} />
                 Download APK
               </a>
-              <a href="#" className="btn-outline-green gap-2">
+              <a href="#" className="btn-outline-blue gap-2">
                 <Download size={18} />
                 App Store
               </a>
             </div>
           </div>
 
-          <div className="w-[714px] max-w-full rounded-3xl">
+          <div className="w-[714px] max-w-full rounded-3xl overflow-hidden shadow-sm">
             <img
-              src="/images/poster.svg"
-              alt="Poster MENARA Masjid"
+              src="/images/posterp.webp"
+              alt="Poster UPZ Sekolah"
               className="w-full h-auto"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* ============================== */}
-      {/* TESTIMONI SECTION */}
-      {/* ============================== */}
-      <section className="section-padding py-[60px]">
-        <div className="content-width">
-          <div className="flex flex-col items-start gap-6 mb-6">
-            <div className="badge-green">
-              <MessageCircle size={14} />
-              <span>Testimoni</span>
-            </div>
-            <h2 className="text-display-lg text-[#303030] max-md:text-[32px] max-md:leading-[40px]">Apa Kata Mereka</h2>
-          </div>
-
-          <div className="flex flex-row items-stretch gap-6 max-lg:flex-col">
-            {testimoniData.map((item, index) => (
-              <div key={index} className="testimoni-card flex-1">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#EFB100">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-base leading-6 text-[#666] max-md:text-sm">"{item.comment}"</p>
-                <span className="text-base font-medium leading-6 text-[#303030]">— {item.author}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -300,18 +265,58 @@ export default function HomePage() {
       {/* ============================== */}
       <section className="section-padding py-[60px]">
         <div className="content-width">
-          <h2 className="text-2xl font-semibold leading-8 text-center text-[#303030] mb-6">Quick Access</h2>
-          <div className="flex flex-row items-stretch gap-6 max-lg:grid max-lg:grid-cols-2 max-md:grid-cols-1">
+          <div className="text-center mb-8">
+            <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">Akses Cepat</span>
+            <h2 className="text-2xl font-bold text-slate-800 mt-1">Layanan Utama UPZ Sekolah</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {quickAccessData.map((item, index) => (
-              <div key={index} className="quick-access-card flex-1">
-                <div className="w-12 h-12 rounded-xl bg-[#E6F9F0] flex items-center justify-center">
+              <div key={index} className="p-6 bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:border-sky-300 hover:shadow-md transition-all flex flex-col justify-between items-center text-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600">
                   {item.icon}
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                  <span className="text-base font-semibold leading-6 text-center text-[#303030]">{item.title}</span>
-                  <span className="text-sm leading-5 text-center text-[#888]">{item.subtitle}</span>
+                <div className="flex flex-col items-center gap-1">
+                  <span className="text-base font-bold text-slate-800">{item.title}</span>
+                  <span className="text-xs text-slate-500">{item.subtitle}</span>
                 </div>
-                <button className="px-3 py-1.5 bg-[#28A71A] rounded-[7px] text-white text-xs font-medium leading-[18px] text-center border-none cursor-pointer hover:bg-[#1f8a13] transition-colors">{item.buttonText}</button>
+                <Link to={item.link} className="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-600 hover:text-white rounded-xl text-xs font-semibold transition-colors">
+                  {item.buttonText}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================== */}
+      {/* TESTIMONI SECTION */}
+      {/* ============================== */}
+      <section className="section-padding py-[60px] bg-slate-50">
+        <div className="content-width">
+          <div className="flex flex-col items-start gap-3 mb-8">
+            <div className="badge-blue">
+              <MessageCircle size={14} />
+              <span>Testimoni</span>
+            </div>
+            <h2 className="text-display-lg text-slate-800 max-md:text-[28px] max-md:leading-[36px]">
+              Apa Kata Pengelola UPZ Sekolah
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimoniData.map((item, index) => (
+              <div key={index} className="p-6 bg-white rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between gap-4">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm leading-relaxed text-slate-600 italic">"{item.comment}"</p>
+                <div className="pt-3 border-t border-slate-100">
+                  <span className="text-xs font-bold text-slate-800">{item.author}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -321,14 +326,24 @@ export default function HomePage() {
       {/* ============================== */}
       {/* CTA SECTION */}
       {/* ============================== */}
-      <section className="flex flex-col justify-center items-center py-10 px-5 gap-6 bg-[#EAF6E8]">
-        <h2 className="text-display-md text-center text-[#303030] max-md:text-[28px] max-md:leading-[36px]">Butuh Bantuan?</h2>
-        <p className="text-base leading-6 text-center text-[#303030] max-md:text-sm">Temukan panduan untuk memaksimalkan fitur dan layanan kami.</p>
-        <Link to="/kontak" className="btn-primary-green gap-2">
-          <HelpCircle size={18} />
-          Pusat Bantuan
-          <ArrowRight size={18} />
-        </Link>
+      <section className="flex flex-col justify-center items-center py-14 px-5 gap-5 bg-gradient-to-br from-sky-50 via-sky-100/40 to-sky-50 border-t border-sky-100 text-center">
+        <h2 className="text-display-md text-slate-800 max-md:text-[26px] max-md:leading-[34px]">
+          Ingin Membentuk UPZ di Sekolah Anda?
+        </h2>
+        <p className="text-base leading-6 text-slate-600 max-w-xl max-md:text-sm">
+          Daftarkan sekolah Anda sekarang untuk memperoleh SK resmi dari BAZNAS dan kelola ZIS sekolah dengan sistem digital terpercaya.
+        </p>
+        <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
+          <Link to="/ajukan-masjid" className="btn-primary-blue gap-2 py-3 px-6 text-sm font-semibold">
+            <GraduationCap size={18} />
+            Ajukan UPZ Sekolah Baru
+          </Link>
+          <Link to="/kontak" className="btn-outline-blue gap-2 py-3 px-6 text-sm font-semibold">
+            <HelpCircle size={18} />
+            Pusat Konsultasi
+            <ArrowRight size={18} />
+          </Link>
+        </div>
       </section>
     </div>
   );

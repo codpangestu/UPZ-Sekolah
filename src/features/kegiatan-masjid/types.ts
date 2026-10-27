@@ -23,6 +23,6 @@ export const JENIS_KEGIATAN_OPTIONS = [
 ];
 
 export const JENIS_KEGIATAN_COLOR: Record<string, string> = {
-  rutin: 'bg-[#EAF6E8] text-[#1C7712]',
-  tertentu: 'bg-[#EAF2FF] text-[#2B7FFF]',
+  rutin: 'bg-[#F0F9FF] text-[#0284C7] border border-[#BAE6FD]',
+  tertentu: 'bg-[#E0F2FE] text-[#0369A1] border border-[#7DD3FC]',
 };

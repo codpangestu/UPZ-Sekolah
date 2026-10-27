@@ -166,7 +166,7 @@ export default function OperasionalKasPage() {
     <div className="space-y-6">
       <Link
         to="/microfinance"
-        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#28A71A] transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#0284C7] transition-colors"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         <ArrowLeft size={16} />
@@ -174,8 +174,8 @@ export default function OperasionalKasPage() {
       </Link>
 
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <Landmark size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <Landmark size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -189,7 +189,7 @@ export default function OperasionalKasPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <TrendingUp size={14} className="text-[#28A71A]" /> Total Penerimaan
+            <TrendingUp size={14} className="text-[#0284C7]" /> Total Penerimaan
           </div>
           <p className="text-xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {loadingMasuk ? '...' : formatRupiah(totalMasuk)}
@@ -205,7 +205,7 @@ export default function OperasionalKasPage() {
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <Wallet size={14} className="text-[#28A71A]" /> Saldo Kas Operasional
+            <Wallet size={14} className="text-[#0284C7]" /> Saldo Kas Operasional
           </div>
           <p className="text-xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {loadingMasuk || loadingKeluar ? '...' : formatRupiah(saldo)}
@@ -217,14 +217,14 @@ export default function OperasionalKasPage() {
       <div className="flex items-center gap-2">
         <button
           onClick={() => { setTab('penerimaan'); setShowForm(false); }}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'penerimaan' ? 'bg-[#28A71A] text-white' : 'bg-white border border-[rgba(0,0,0,0.1)] text-[#555] hover:border-[#28A71A]'}`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'penerimaan' ? 'bg-[#0284C7] text-white' : 'bg-white border border-[rgba(0,0,0,0.1)] text-[#555] hover:border-[#0284C7]'}`}
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Penerimaan
         </button>
         <button
           onClick={() => { setTab('pengeluaran'); setShowForm(false); }}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'pengeluaran' ? 'bg-[#28A71A] text-white' : 'bg-white border border-[rgba(0,0,0,0.1)] text-[#555] hover:border-[#28A71A]'}`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === 'pengeluaran' ? 'bg-[#0284C7] text-white' : 'bg-white border border-[rgba(0,0,0,0.1)] text-[#555] hover:border-[#0284C7]'}`}
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Pengeluaran
@@ -265,7 +265,7 @@ export default function OperasionalKasPage() {
                   type="date"
                   value={formData.tanggal || ''}
                   onChange={(e) => setFormData({ ...formData, tanggal: e.target.value })}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                 />
               </div>
               <div>
@@ -280,7 +280,7 @@ export default function OperasionalKasPage() {
                       [tab === 'penerimaan' ? 'id_bmm_label_info_dana_kas_operasional' : 'id_bmm_label_penggunaan_kas_operasional']: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                 >
                   <option value="">Pilih label...</option>
                   {(tab === 'penerimaan' ? labelInfoDana : labelPenggunaan).map((l) => (
@@ -302,7 +302,7 @@ export default function OperasionalKasPage() {
                     type="number"
                     value={formData[tab === 'penerimaan' ? 'nominal_masuk' : 'nominal_keluar'] || ''}
                     onChange={(e) => setFormData({ ...formData, [tab === 'penerimaan' ? 'nominal_masuk' : 'nominal_keluar']: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                   />
                 </div>
                 <div>
@@ -313,7 +313,7 @@ export default function OperasionalKasPage() {
                     type="number"
                     value={formData[tab === 'penerimaan' ? 'jumlah_donatur' : 'jumlah_penerima_manfaat'] || ''}
                     onChange={(e) => setFormData({ ...formData, [tab === 'penerimaan' ? 'jumlah_donatur' : 'jumlah_penerima_manfaat']: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A]"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7]"
                   />
                 </div>
               </div>
@@ -323,13 +323,13 @@ export default function OperasionalKasPage() {
                   value={formData.keterangan || ''}
                   onChange={(e) => setFormData({ ...formData, keterangan: e.target.value })}
                   rows={3}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] resize-none"
                 />
               </div>
             </div>
             <div className="flex gap-3 mt-6 justify-end">
               <button onClick={() => setShowForm(false)} className="px-4 py-2 border border-[rgba(0,0,0,0.15)] rounded-xl text-sm text-[#303030] hover:bg-[#F0F4F8]">Batal</button>
-              <button onClick={handleSubmit} className="btn-primary-green rounded-xl">
+              <button onClick={handleSubmit} className="btn-primary-blue rounded-xl">
                 <Plus size={16} />{editItem ? 'Simpan' : 'Tambah'}
               </button>
             </div>

@@ -38,61 +38,61 @@ export default function KontakPage() {
             {/* Contact Info */}
             <div>
               <h2 className="section-title mb-6">
-                Mari <span className="text-gradient-green">Terhubung</span>
+                Mari <span className="text-gradient-blue">Terhubung</span>
               </h2>
               <p className="text-base text-[#555] mb-10 leading-relaxed">
-                Jangan ragu untuk menghubungi kami jika ada pertanyaan, saran, atau
-                masukan terkait platform MENARA.
+                Jangan ragu untuk menghubungi tim kami jika ada pertanyaan, saran, atau
+                konsultasi terkait pendaftaran dan pengelolaan UPZ Sekolah BAZNAS.
               </p>
 
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#EAF6E8] flex items-center justify-center flex-shrink-0">
-                    <MapPin size={20} className="text-[#28A71A]" />
+                  <div className="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center flex-shrink-0 text-sky-600">
+                    <MapPin size={20} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#303030] mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Kantor Pusat</h4>
-                    <p className="text-sm text-[#555] leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                    <h4 className="font-semibold text-slate-800 mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Kantor Pusat BAZNAS RI</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                       Gedung BAZNAS RI<br />
-                      Jl. Medan Merdeka Timur No. 14<br />
-                      Jakarta Pusat, 10110
+                      Jl. Matraman Raya No. 134, Kebon Manggis<br />
+                      Jakarta Timur, 13150
                     </p>
                   </div>
                 </div>
 
                 {/* Phone */}
                 <div className="flex gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#EAF6E8] flex items-center justify-center flex-shrink-0">
-                    <Phone size={20} className="text-[#28A71A]" />
+                  <div className="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center flex-shrink-0 text-sky-600">
+                    <Phone size={20} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#303030] mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Telepon</h4>
-                    <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                      (021) 1234-5678<br />
-                      (021) 8765-4321
+                    <h4 className="font-semibold text-slate-800 mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Layanan Call Center</h4>
+                    <p className="text-sm text-slate-600" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      0811 8882 1818<br />
+                      (021) 2289-7979
                     </p>
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="flex gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#EAF6E8] flex items-center justify-center flex-shrink-0">
-                    <Mail size={20} className="text-[#28A71A]" />
+                  <div className="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center flex-shrink-0 text-sky-600">
+                    <Mail size={20} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#303030] mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Email</h4>
-                    <p className="text-sm text-[#555]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                      info@menara.baznas.go.id<br />
-                      support@menara.baznas.go.id
+                    <h4 className="font-semibold text-slate-800 mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Email Resmi</h4>
+                    <p className="text-sm text-slate-600" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      upzsekolah@baznas.go.id<br />
+                      layanan@baznas.go.id
                     </p>
                   </div>
                 </div>
 
                 {/* Hours */}
                 <div className="flex gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-[#EAF6E8] flex items-center justify-center flex-shrink-0">
-                    <Clock size={20} className="text-[#28A71A]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#E0F2FE] flex items-center justify-center flex-shrink-0">
+                    <Clock size={20} className="text-[#0284C7]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#303030] mb-1 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Jam Operasional</h4>
@@ -120,7 +120,7 @@ export default function KontakPage() {
                     required
                     value={formData.nama}
                     onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#28A71A] focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0284C7] focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-sm"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     placeholder="Masukkan nama Anda"
                   />
@@ -134,7 +134,7 @@ export default function KontakPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#28A71A] focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0284C7] focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-sm"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     placeholder="Masukkan email Anda"
                   />
@@ -148,7 +148,7 @@ export default function KontakPage() {
                     required
                     value={formData.subjek}
                     onChange={(e) => setFormData({ ...formData, subjek: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#28A71A] focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0284C7] focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-sm"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     placeholder="Subjek pesan"
                   />
@@ -162,14 +162,14 @@ export default function KontakPage() {
                     rows={5}
                     value={formData.pesan}
                     onChange={(e) => setFormData({ ...formData, pesan: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#28A71A] focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0284C7] focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 transition-all text-sm resize-none"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     placeholder="Tulis pesan Anda..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="btn-primary-green w-full justify-center text-base py-4 rounded-xl"
+                  className="btn-primary-blue w-full justify-center text-base py-4 rounded-xl"
                 >
                   <Send size={16} />
                   Kirim Pesan

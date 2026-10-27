@@ -9,9 +9,9 @@ export const dataPengurusSchema = z.object({
     .refine((val) => /^0[0-9]{8,12}$/.test(val.replace(/[\s-]/g, '')), 'Format nomor HP tidak valid'),
   alamat: z.string().min(1, 'Alamat wajib diisi'),
   jenis_kelamin: z.string().min(1, 'Jenis kelamin wajib dipilih'),
-  masa_jabatan_mulai: z.string().optional().default(''),
-  masa_jabatan_selesai: z.string().optional().default(''),
-  keterangan: z.string().optional().default(''),
+  masa_jabatan_mulai: z.string(),
+  masa_jabatan_selesai: z.string(),
+  keterangan: z.string(),
 });
 
 export type DataPengurusFormValues = z.infer<typeof dataPengurusSchema>;

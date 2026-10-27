@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  Building2,
+  GraduationCap,
   MapPin,
   Phone,
   Mail,
@@ -31,7 +31,7 @@ import {
 } from '../hooks/useMasjidProfile';
 import type { Provinsi, KabupatenKota, Kecamatan, KelurahanDesa } from '../../../types';
 
-const JENIS_MASJID_OPTIONS = ['Masjid', 'Musholla', 'Langgar', 'Surau'];
+const JENIS_MASJID_OPTIONS = ['SD/MI', 'SMP/MTs', 'SMA/SMK/MA', 'Pesantren', 'Perguruan Tinggi', 'Masjid Sekolah', 'Lainnya'];
 
 const MEDSOS_ICONS: Record<string, typeof Camera> = {
   Instagram: Camera,
@@ -160,7 +160,7 @@ export default function ProfilMasjidPage() {
   const handleSave = async () => {
     if (!idMasjid) return;
     if (!form.nama_masjid.trim()) {
-      alert('Nama masjid wajib diisi');
+      alert('Nama UPZ Sekolah wajib diisi');
       return;
     }
     const payload = {
@@ -208,16 +208,16 @@ export default function ProfilMasjidPage() {
 
   const isSaving = updateMutation.isPending;
 
-  // Tidak ada id masjid (mis. role Admin BAZNAS yang tidak terikat satu masjid)
+  // Tidak ada id masjid (mis. role Admin BAZNAS yang tidak terikat satu UPZ sekolah)
   if (!idMasjid) {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-3">
-        <Building2 size={32} className="text-[#B0B0B0]" />
+        <GraduationCap size={32} className="text-[#B0B0B0]" />
         <p className="text-sm text-text-gray">
-          Halaman profil masjid hanya tersedia untuk Admin Masjid.
+          Halaman profil UPZ Sekolah hanya tersedia untuk Admin UPZ Sekolah.
         </p>
         <p className="text-xs text-[#B0B0B0]">
-          Login dengan akun Admin Masjid untuk mengelola profil masjid Anda.
+          Login dengan akun Admin UPZ Sekolah untuk mengelola profil UPZ Sekolah Anda.
         </p>
       </div>
     );
@@ -227,8 +227,8 @@ export default function ProfilMasjidPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 size={24} className="animate-spin text-[#28A71A]" />
-        <span className="ml-3 text-sm text-text-gray">Memuat profil masjid...</span>
+        <Loader2 size={24} className="animate-spin text-[#0284C7]" />
+        <span className="ml-3 text-sm text-text-gray">Memuat profil UPZ Sekolah...</span>
       </div>
     );
   }
@@ -238,8 +238,8 @@ export default function ProfilMasjidPage() {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-3">
         <AlertCircle size={32} className="text-red-400" />
-        <p className="text-sm text-text-gray">Gagal memuat profil masjid</p>
-        <button onClick={() => refetch()} className="btn-primary-green text-sm">
+        <p className="text-sm text-text-gray">Gagal memuat profil UPZ Sekolah</p>
+        <button onClick={() => refetch()} className="btn-primary-blue text-sm">
           <RefreshCw size={14} /> Muat Ulang
         </button>
       </div>
@@ -251,22 +251,22 @@ export default function ProfilMasjidPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-            <Building2 size={20} className="text-[#28A71A]" />
+          <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+            <GraduationCap size={20} className="text-[#0284C7]" />
           </div>
           <div>
             <h2 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              Profil Masjid
+              Profil UPZ Sekolah
             </h2>
             <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              Kelola informasi detail masjid Anda
+              Kelola informasi detail UPZ Sekolah Anda
             </p>
           </div>
         </div>
         <button
           onClick={handleSave}
           disabled={isSaving}
-          className="px-5 py-2.5 bg-[#28A71A] hover:bg-[#1C7712] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+          className="px-5 py-2.5 bg-[#0284C7] hover:bg-[#0369A1] disabled:bg-[#B0B0B0] text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2 shadow-sm"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
@@ -275,40 +275,40 @@ export default function ProfilMasjidPage() {
       </div>
 
       {/* ===== INFORMASI UMUM ===== */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6">
+      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6 shadow-xs">
         <div className="flex items-center gap-2 mb-5">
-          <Building2 size={18} className="text-[#28A71A]" />
+          <GraduationCap size={18} className="text-[#0284C7]" />
           <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Informasi Umum
+            Informasi Umum UPZ Sekolah
           </h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#303030] mb-1">Nama Masjid</label>
+            <label className="block text-sm font-medium text-[#303030] mb-1">Nama UPZ Sekolah</label>
             <input
               type="text"
               value={form.nama_masjid}
               onChange={(e) => handleChange('nama_masjid', e.target.value)}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-[#303030] mb-1">Alamat</label>
+            <label className="block text-sm font-medium text-[#303030] mb-1">Alamat Sekolah</label>
             <textarea
               value={form.alamat_masjid}
               onChange={(e) => handleChange('alamat_masjid', e.target.value)}
               rows={2}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all resize-none"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all resize-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#303030] mb-1">Jenis Masjid</label>
+            <label className="block text-sm font-medium text-[#303030] mb-1">Jenjang / Kategori Sekolah</label>
             <select
               value={form.jenis_masjid}
               onChange={(e) => handleChange('jenis_masjid', e.target.value)}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             >
-              <option value="">Pilih Jenis</option>
+              <option value="">Pilih Jenjang</option>
               {JENIS_MASJID_OPTIONS.map((opt) => (
                 <option key={opt} value={opt}>{opt}</option>
               ))}
@@ -321,18 +321,18 @@ export default function ProfilMasjidPage() {
               value={form.kode_pos}
               onChange={(e) => handleChange('kode_pos', e.target.value)}
               placeholder="Contoh: 60111"
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             />
           </div>
         </div>
       </div>
 
       {/* ===== INFORMASI KONTAK ===== */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6">
+      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6 shadow-xs">
         <div className="flex items-center gap-2 mb-5">
-          <Phone size={18} className="text-[#28A71A]" />
+          <Phone size={18} className="text-[#0284C7]" />
           <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Kontak
+            Kontak UPZ Sekolah
           </h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -345,20 +345,20 @@ export default function ProfilMasjidPage() {
                 value={form.nohp_masjid}
                 onChange={(e) => handleChange('nohp_masjid', e.target.value)}
                 placeholder="08123456789"
-                className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#303030] mb-1">Email</label>
+            <label className="block text-sm font-medium text-[#303030] mb-1">Email Resmi</label>
             <div className="relative">
               <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
               <input
                 type="email"
                 value={form.email_masjid}
                 onChange={(e) => handleChange('email_masjid', e.target.value)}
-                placeholder="email@masjid.com"
-                className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+                placeholder="upz@sekolah.sch.id"
+                className="w-full pl-10 pr-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
               />
             </div>
           </div>
@@ -366,9 +366,9 @@ export default function ProfilMasjidPage() {
       </div>
 
       {/* ===== LOKASI / WILAYAH ===== */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6">
+      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6 shadow-xs">
         <div className="flex items-center gap-2 mb-5">
-          <MapPin size={18} className="text-[#28A71A]" />
+          <MapPin size={18} className="text-[#0284C7]" />
           <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Lokasi & Wilayah
           </h3>
@@ -380,7 +380,7 @@ export default function ProfilMasjidPage() {
               value={form.id_provinsi}
               onChange={(e) => { handleChange('id_provinsi', e.target.value); handleChange('id_kabupaten_kota', ''); handleChange('id_kecamatan', ''); handleChange('id_kelurahan_desa', ''); }}
               disabled={loadingWilayah}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             >
               <option value="">Pilih Provinsi</option>
               {provinsiList.map((p) => (
@@ -394,7 +394,7 @@ export default function ProfilMasjidPage() {
               value={form.id_kabupaten_kota}
               onChange={(e) => { handleChange('id_kabupaten_kota', e.target.value); handleChange('id_kecamatan', ''); handleChange('id_kelurahan_desa', ''); }}
               disabled={!form.id_provinsi}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             >
               <option value="">Pilih Kab/Kota</option>
               {kabkotList.map((k) => (
@@ -408,7 +408,7 @@ export default function ProfilMasjidPage() {
               value={form.id_kecamatan}
               onChange={(e) => { handleChange('id_kecamatan', e.target.value); handleChange('id_kelurahan_desa', ''); }}
               disabled={!form.id_kabupaten_kota}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             >
               <option value="">Pilih Kecamatan</option>
               {kecamatanList.map((k) => (
@@ -422,7 +422,7 @@ export default function ProfilMasjidPage() {
               value={form.id_kelurahan_desa}
               onChange={(e) => handleChange('id_kelurahan_desa', e.target.value)}
               disabled={!form.id_kecamatan}
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             >
               <option value="">Pilih Kelurahan/Desa</option>
               {kelurahanList.map((k) => (
@@ -437,7 +437,7 @@ export default function ProfilMasjidPage() {
               value={form.latitude}
               onChange={(e) => handleChange('latitude', e.target.value)}
               placeholder="-7.257471"
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             />
           </div>
           <div>
@@ -447,57 +447,57 @@ export default function ProfilMasjidPage() {
               value={form.longitude}
               onChange={(e) => handleChange('longitude', e.target.value)}
               placeholder="112.752138"
-              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all"
+              className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20 focus:border-[#0284C7] transition-all"
             />
           </div>
         </div>
       </div>
 
       {/* ===== REKENING BANK ===== */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6">
+      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6 shadow-xs">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
-            <Landmark size={18} className="text-[#28A71A]" />
+            <Landmark size={18} className="text-[#0284C7]" />
             <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              Rekening Bank
+              Rekening Bank Resmi UPZ
             </h3>
           </div>
           <button
             onClick={() => setShowBankForm(!showBankForm)}
-            className="text-sm text-[#28A71A] hover:text-[#1C7712] font-medium flex items-center gap-1 transition-colors"
+            className="text-sm text-[#0284C7] hover:text-[#0369A1] font-medium flex items-center gap-1 transition-colors"
           >
             <Plus size={14} /> Tambah Rekening
           </button>
         </div>
 
         {showBankForm && (
-          <div className="mb-4 p-4 bg-[#FAFAFA] rounded-lg border border-[#F0F4F8] space-y-3">
+          <div className="mb-4 p-4 bg-[#F0F9FF]/50 rounded-lg border border-[#BAE6FD] space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <input
                 type="text"
                 value={bankForm.nama_bank}
                 onChange={(e) => setBankForm((p) => ({ ...p, nama_bank: e.target.value }))}
-                placeholder="Nama Bank (BCA, Mandiri, dll)"
-                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                placeholder="Nama Bank (BSI, BCA, dll)"
+                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               />
               <input
                 type="text"
                 value={bankForm.norek}
                 onChange={(e) => setBankForm((p) => ({ ...p, norek: e.target.value }))}
                 placeholder="Nomor Rekening"
-                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               />
               <input
                 type="text"
                 value={bankForm.atas_nama}
                 onChange={(e) => setBankForm((p) => ({ ...p, atas_nama: e.target.value }))}
-                placeholder="Atas Nama"
-                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                placeholder="Atas Nama (UPZ Sekolah...)"
+                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               />
             </div>
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowBankForm(false)} className="px-3 py-1.5 text-sm text-text-gray hover:text-[#303030] transition-colors">Batal</button>
-              <button onClick={handleAddBank} disabled={addBankMutation.isPending} className="px-4 py-1.5 bg-[#28A71A] text-white rounded-lg text-sm font-medium hover:bg-[#1C7712] transition-colors flex items-center gap-1">
+              <button onClick={handleAddBank} disabled={addBankMutation.isPending} className="px-4 py-1.5 bg-[#0284C7] text-white rounded-lg text-sm font-medium hover:bg-[#0369A1] transition-colors flex items-center gap-1 shadow-xs">
                 {addBankMutation.isPending ? <Loader2 size={14} className="animate-spin" /> : null} Simpan
               </button>
             </div>
@@ -509,8 +509,8 @@ export default function ProfilMasjidPage() {
             {masjid.bank.map((b, i) => (
               <div key={i} className="flex items-center justify-between p-3 bg-[#FAFAFA] rounded-lg border border-[#F0F4F8]">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-white rounded-lg border border-[#F0F4F8] flex items-center justify-center">
-                    <Banknote size={16} className="text-[#28A71A]" />
+                  <div className="w-9 h-9 bg-white rounded-lg border border-[#BAE6FD] flex items-center justify-center">
+                    <Banknote size={16} className="text-[#0284C7]" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-[#303030]">{b.nama_bank}</p>
@@ -529,29 +529,29 @@ export default function ProfilMasjidPage() {
       </div>
 
       {/* ===== MEDIA SOSIAL ===== */}
-      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6">
+      <div className="bg-white rounded-xl border border-[#F0F4F8] p-6 shadow-xs">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
-            <Share2 size={18} className="text-[#28A71A]" />
+            <Share2 size={18} className="text-[#0284C7]" />
             <h3 className="text-base font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              Media Sosial
+              Kanal Informasi & Media Sosial
             </h3>
           </div>
           <button
             onClick={() => setShowMedsosForm(!showMedsosForm)}
-            className="text-sm text-[#28A71A] hover:text-[#1C7712] font-medium flex items-center gap-1 transition-colors"
+            className="text-sm text-[#0284C7] hover:text-[#0369A1] font-medium flex items-center gap-1 transition-colors"
           >
             <Plus size={14} /> Tambah Media Sosial
           </button>
         </div>
 
         {showMedsosForm && (
-          <div className="mb-4 p-4 bg-[#FAFAFA] rounded-lg border border-[#F0F4F8] space-y-3">
+          <div className="mb-4 p-4 bg-[#F0F9FF]/50 rounded-lg border border-[#BAE6FD] space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <select
                 value={medsosForm.name_medsos}
                 onChange={(e) => setMedsosForm((p) => ({ ...p, name_medsos: e.target.value }))}
-                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               >
                 <option value="">Pilih Platform</option>
                 <option value="Instagram">Instagram</option>
@@ -568,12 +568,12 @@ export default function ProfilMasjidPage() {
                 value={medsosForm.url_medsos}
                 onChange={(e) => setMedsosForm((p) => ({ ...p, url_medsos: e.target.value }))}
                 placeholder="URL (https://instagram.com/...)"
-                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20"
+                className="px-4 py-2 border border-[#D4D4D4] rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#0284C7]/20"
               />
             </div>
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowMedsosForm(false)} className="px-3 py-1.5 text-sm text-text-gray hover:text-[#303030] transition-colors">Batal</button>
-              <button onClick={handleAddMedsos} disabled={addMedsosMutation.isPending} className="px-4 py-1.5 bg-[#28A71A] text-white rounded-lg text-sm font-medium hover:bg-[#1C7712] transition-colors flex items-center gap-1">
+              <button onClick={handleAddMedsos} disabled={addMedsosMutation.isPending} className="px-4 py-1.5 bg-[#0284C7] text-white rounded-lg text-sm font-medium hover:bg-[#0369A1] transition-colors flex items-center gap-1 shadow-xs">
                 {addMedsosMutation.isPending ? <Loader2 size={14} className="animate-spin" /> : null} Simpan
               </button>
             </div>
@@ -592,8 +592,8 @@ export default function ProfilMasjidPage() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 hover:opacity-80 transition-opacity"
                   >
-                    <div className="w-9 h-9 bg-white rounded-lg border border-[#F0F4F8] flex items-center justify-center">
-                      <Icon size={16} className="text-[#28A71A]" />
+                    <div className="w-9 h-9 bg-white rounded-lg border border-[#BAE6FD] flex items-center justify-center">
+                      <Icon size={16} className="text-[#0284C7]" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-[#303030]">{m.name_medsos}</p>

@@ -1,18 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Building2,
   MapPin,
   Phone,
-  FileText,
   Send,
   CheckCircle2,
   ArrowLeft,
   Loader2,
   AlertCircle,
+  GraduationCap,
 } from 'lucide-react';
 import { adminService } from '../services/adminService';
-import type { PengajuanFormData, PengajuanFormState, Kecamatan, KelurahanDesa } from '../types';
+import type { PengajuanFormState, Kecamatan, KelurahanDesa } from '../types';
 
 const initialForm: PengajuanFormState = {
   nama_masjid: '',
@@ -48,7 +47,7 @@ export default function AjukanMasjidPage() {
           setProvinsiList(res.data);
         }
       } catch {
-        // Silent fail - use empty list
+        // Silent fail
       } finally {
         setLoadingWilayah(false);
       }
@@ -121,11 +120,11 @@ export default function AjukanMasjidPage() {
 
   const validate = useCallback((): boolean => {
     const newErrors: typeof errors = {};
-    if (!form.nama_masjid.trim()) newErrors.nama_masjid = 'Nama masjid wajib diisi';
-    if (!form.alamat_masjid.trim()) newErrors.alamat_masjid = 'Alamat masjid wajib diisi';
-    if (!form.nohp_masjid.trim()) newErrors.nohp_masjid = 'Nomor HP wajib diisi';
+    if (!form.nama_masjid.trim()) newErrors.nama_masjid = 'Nama sekolah / UPZ wajib diisi';
+    if (!form.alamat_masjid.trim()) newErrors.alamat_masjid = 'Alamat lengkap sekolah wajib diisi';
+    if (!form.nohp_masjid.trim()) newErrors.nohp_masjid = 'Nomor kontak / WhatsApp wajib diisi';
     else if (!/^0[0-9]{8,12}$/.test(form.nohp_masjid.replace(/[\s-]/g, '')))
-      newErrors.nohp_masjid = 'Format nomor HP tidak valid (contoh: 08123456789)';
+      newErrors.nohp_masjid = 'Format nomor tidak valid (contoh: 08123456789)';
     if (!form.id_provinsi) newErrors.id_provinsi = 'Pilih provinsi';
     if (!form.id_kabupaten_kota) newErrors.id_kabupaten_kota = 'Pilih kabupaten/kota';
     setErrors(newErrors);
@@ -165,27 +164,27 @@ export default function AjukanMasjidPage() {
   // Success state
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#FAFAFA] pt-20">
+      <div className="min-h-screen bg-[#F8FAFC] pt-16">
         <div className="max-w-lg mx-auto px-4 py-12">
-          <div className="bg-white rounded-2xl border border-[#F0F4F8] p-8 text-center">
-            <div className="w-16 h-16 bg-[#EAF6E8] rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 size={32} className="text-[#28A71A]" />
+          <div className="bg-white rounded-3xl border border-sky-100 shadow-xl p-8 text-center">
+            <div className="w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-sky-100">
+              <CheckCircle2 size={36} />
             </div>
             <h2
-              className="text-xl font-semibold text-[#303030] mb-2"
+              className="text-2xl font-bold text-slate-800 mb-2"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Pengajuan Berhasil Dikirim!
             </h2>
             <p
-              className="text-sm text-text-gray mb-6"
+              className="text-sm text-slate-600 leading-relaxed mb-6"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              Terima kasih! Pengajuan masjid Anda telah diterima dan akan diproses oleh tim BAZNAS. Kami akan menghubungi Anda melalui nomor yang didaftarkan.
+              Terima kasih! Pengajuan pembentukan UPZ di sekolah Anda telah kami terima dan akan segera diproses oleh tim BAZNAS Daerah setempat. Tim kami akan menghubungi kontak yang didaftarkan.
             </p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 py-2.5 px-6 bg-[#28A71A] text-white rounded-lg text-sm font-medium hover:bg-[#1C7712] transition-colors"
+              className="btn-primary-blue w-full justify-center py-3 rounded-xl text-sm font-semibold"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               <ArrowLeft size={16} />
@@ -198,36 +197,36 @@ export default function AjukanMasjidPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] pt-20">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
+    <div className="min-h-screen bg-[#F8FAFC] pt-12 pb-20">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6">
         {/* Back button */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm text-text-gray hover:text-[#28A71A] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-sky-600 transition-colors mb-6"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
-          <ArrowLeft size={16} />
-          Kembali
+          <ArrowLeft size={14} />
+          Kembali ke Beranda
         </Link>
 
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-              <Building2 size={20} className="text-[#28A71A]" />
+        <div className="mb-6">
+          <div className="flex items-center gap-3.5 mb-2">
+            <div className="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center shadow-sm">
+              <GraduationCap size={24} />
             </div>
             <div>
               <h1
-                className="text-xl font-semibold text-[#303030]"
+                className="text-2xl font-bold text-slate-800"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                Ajukan Masjid Baru
+                Ajukan UPZ Sekolah Baru
               </h1>
               <p
-                className="text-sm text-text-gray"
+                className="text-xs text-slate-500"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                Daftarkan masjid Anda ke platform MENARA Masjid BAZNAS
+                Daftarkan sekolah Anda ke platform resmi UPZ Sekolah binaan BAZNAS RI
               </p>
             </div>
           </div>
@@ -235,136 +234,134 @@ export default function AjukanMasjidPage() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-2xl border border-[#F0F4F8] p-6 space-y-5">
-            {/* Nama Masjid */}
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 space-y-4 shadow-sm">
+            {/* Nama Sekolah */}
             <div>
-              <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Nama Masjid <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Nama Sekolah / Madrasah <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
                 value={form.nama_masjid}
                 onChange={(e) => handleChange('nama_masjid', e.target.value)}
-                placeholder="Masukkan nama masjid"
-                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all placeholder:text-[#B0B0B0] ${
-                  errors.nama_masjid ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'
+                placeholder="Contoh: SMA Negeri 1 Jakarta / MAN 2 Bandung"
+                className={`w-full px-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all placeholder:text-slate-400 ${
+                  errors.nama_masjid ? 'border-rose-300' : 'border-slate-200 focus:border-sky-500'
                 }`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               />
-              {errors.nama_masjid && <p className="text-xs text-red-500 mt-1">{errors.nama_masjid}</p>}
+              {errors.nama_masjid && <p className="text-xs text-rose-500 mt-1">{errors.nama_masjid}</p>}
             </div>
 
             {/* Alamat */}
             <div>
-              <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Alamat Masjid <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Alamat Lengkap Sekolah <span className="text-rose-500">*</span>
               </label>
               <textarea
                 value={form.alamat_masjid}
                 onChange={(e) => handleChange('alamat_masjid', e.target.value)}
-                placeholder="Masukkan alamat lengkap masjid"
+                placeholder="Jl. Pendidikan No. ..., RT/RW, Kelurahan"
                 rows={3}
-                className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all placeholder:text-[#B0B0B0] resize-none ${
-                  errors.alamat_masjid ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'
+                className={`w-full px-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all placeholder:text-slate-400 resize-none ${
+                  errors.alamat_masjid ? 'border-rose-300' : 'border-slate-200 focus:border-sky-500'
                 }`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               />
-              {errors.alamat_masjid && <p className="text-xs text-red-500 mt-1">{errors.alamat_masjid}</p>}
+              {errors.alamat_masjid && <p className="text-xs text-rose-500 mt-1">{errors.alamat_masjid}</p>}
             </div>
 
             {/* No HP */}
             <div>
-              <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                No. HP Pengurus <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                No. Telepon / WhatsApp Kontak Pembina <span className="text-rose-500">*</span>
               </label>
               <div className="relative">
-                <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="tel"
                   value={form.nohp_masjid}
                   onChange={(e) => handleChange('nohp_masjid', e.target.value)}
-                  placeholder="08123456789"
-                  className={`w-full pl-10 pr-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all placeholder:text-[#B0B0B0] ${
-                    errors.nohp_masjid ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'
+                  placeholder="08xxxxxxxxxx"
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all placeholder:text-slate-400 ${
+                    errors.nohp_masjid ? 'border-rose-300' : 'border-slate-200 focus:border-sky-500'
                   }`}
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 />
               </div>
-              {errors.nohp_masjid && <p className="text-xs text-red-500 mt-1">{errors.nohp_masjid}</p>}
+              {errors.nohp_masjid && <p className="text-xs text-rose-500 mt-1">{errors.nohp_masjid}</p>}
             </div>
 
-            {/* Wilayah - 4 dropdown cascading */}
+            {/* Wilayah cascading */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  Provinsi <span className="text-red-500">*</span>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Provinsi <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
-                  <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                  <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                   <select
                     value={form.id_provinsi}
                     onChange={(e) => handleChange('id_provinsi', e.target.value)}
                     disabled={loadingWilayah}
-                    className={`w-full pl-10 pr-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all appearance-none bg-white ${
-                      errors.id_provinsi ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'
-                    } ${!form.id_provinsi ? 'text-[#B0B0B0]' : 'text-[#303030]'}`}
+                    className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all appearance-none bg-white ${
+                      errors.id_provinsi ? 'border-rose-300' : 'border-slate-200 focus:border-sky-500'
+                    }`}
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     <option value="">Pilih Provinsi</option>
                     {provinsiList.map((p) => (
-                      <option key={p.id} value={p.id} className="text-[#303030]">
+                      <option key={p.id} value={p.id}>
                         {p.nama_provinsi}
                       </option>
                     ))}
                   </select>
                 </div>
-                {errors.id_provinsi && <p className="text-xs text-red-500 mt-1">{errors.id_provinsi}</p>}
+                {errors.id_provinsi && <p className="text-xs text-rose-500 mt-1">{errors.id_provinsi}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  Kabupaten/Kota <span className="text-red-500">*</span>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Kabupaten/Kota <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
-                  <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                  <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                   <select
                     value={form.id_kabupaten_kota}
                     onChange={(e) => handleChange('id_kabupaten_kota', e.target.value)}
                     disabled={!form.id_provinsi}
-                    className={`w-full pl-10 pr-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all appearance-none bg-white ${
-                      errors.id_kabupaten_kota ? 'border-red-300' : 'border-[#D4D4D4] focus:border-[#28A71A]'
-                    } ${!form.id_kabupaten_kota ? 'text-[#B0B0B0]' : 'text-[#303030]'}`}
+                    className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all appearance-none bg-white ${
+                      errors.id_kabupaten_kota ? 'border-rose-300' : 'border-slate-200 focus:border-sky-500'
+                    }`}
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     <option value="">Pilih Kab/Kota</option>
                     {kabkotList.map((k) => (
-                      <option key={k.id} value={k.id} className="text-[#303030]">
+                      <option key={k.id} value={k.id}>
                         {k.nama_kabupaten_kota}
                       </option>
                     ))}
                   </select>
                 </div>
-                {errors.id_kabupaten_kota && <p className="text-xs text-red-500 mt-1">{errors.id_kabupaten_kota}</p>}
+                {errors.id_kabupaten_kota && <p className="text-xs text-rose-500 mt-1">{errors.id_kabupaten_kota}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   Kecamatan
                 </label>
                 <div className="relative">
-                  <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                  <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                   <select
                     value={form.id_kecamatan}
                     onChange={(e) => handleChange('id_kecamatan', e.target.value)}
                     disabled={!form.id_kabupaten_kota}
-                    className={`w-full pl-10 pr-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all appearance-none bg-white ${
-                      !form.id_kabupaten_kota ? 'text-[#B0B0B0]' : 'text-[#303030]'
-                    } border-[#D4D4D4] focus:border-[#28A71A]`}
+                    className="w-full pl-10 pr-4 py-3 border border-slate-200 focus:border-sky-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all appearance-none bg-white"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     <option value="">Pilih Kecamatan</option>
                     {kecamatanList.map((k) => (
-                      <option key={k.id} value={k.id} className="text-[#303030]">
+                      <option key={k.id} value={k.id}>
                         {k.nama_kecamatan}
                       </option>
                     ))}
@@ -373,23 +370,21 @@ export default function AjukanMasjidPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   Kelurahan/Desa
                 </label>
                 <div className="relative">
-                  <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B0B0]" />
+                  <MapPin size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                   <select
                     value={form.id_kelurahan_desa}
                     onChange={(e) => handleChange('id_kelurahan_desa', e.target.value)}
                     disabled={!form.id_kecamatan}
-                    className={`w-full pl-10 pr-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 transition-all appearance-none bg-white ${
-                      !form.id_kecamatan ? 'text-[#B0B0B0]' : 'text-[#303030]'
-                    } border-[#D4D4D4] focus:border-[#28A71A]`}
+                    className="w-full pl-10 pr-4 py-3 border border-slate-200 focus:border-sky-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all appearance-none bg-white"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     <option value="">Pilih Kelurahan/Desa</option>
                     {kelurahanList.map((k) => (
-                      <option key={k.id} value={k.id} className="text-[#303030]">
+                      <option key={k.id} value={k.id}>
                         {k.nama_kelurahan_desa}
                       </option>
                     ))}
@@ -400,15 +395,15 @@ export default function AjukanMasjidPage() {
 
             {/* Keterangan */}
             <div>
-              <label className="block text-sm font-medium text-[#303030] mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Keterangan Tambahan
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Keterangan Tambahan <span className="text-slate-400 font-normal lowercase">(opsional - NPSN, jumlah siswa, dll.)</span>
               </label>
               <textarea
                 value={form.keterangan}
                 onChange={(e) => handleChange('keterangan', e.target.value)}
-                placeholder="Informasi tambahan tentang masjid (misal: status tanah, luas bangunan, dll.)"
-                rows={3}
-                className="w-full px-4 py-2.5 border border-[#D4D4D4] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#28A71A]/20 focus:border-[#28A71A] transition-all placeholder:text-[#B0B0B0] resize-none"
+                placeholder="Contoh: NPSN 20108901 / Jumlah siswa 750 orang"
+                rows={2}
+                className="w-full px-4 py-3 border border-slate-200 focus:border-sky-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all placeholder:text-slate-400 resize-none"
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               />
             </div>
@@ -416,9 +411,9 @@ export default function AjukanMasjidPage() {
 
           {/* Submit Error */}
           {submitError && (
-            <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-              <AlertCircle size={16} className="text-red-500 mt-0.5 flex-shrink-0" />
-              <p className="text-xs text-red-600" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <div className="flex items-start gap-2 p-3.5 bg-rose-50 border border-rose-200 rounded-xl">
+              <AlertCircle size={16} className="text-rose-600 mt-0.5 flex-shrink-0" />
+              <p className="text-xs text-rose-700" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 {submitError}
               </p>
             </div>
@@ -428,7 +423,7 @@ export default function AjukanMasjidPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3 bg-[#28A71A] hover:bg-[#1C7712] disabled:bg-[#B0B0B0] disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-[#28A71A]/20"
+            className="w-full py-3.5 bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-sky-600/20"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             {submitting ? (
@@ -436,13 +431,8 @@ export default function AjukanMasjidPage() {
             ) : (
               <Send size={18} />
             )}
-            {submitting ? 'Mengirim...' : 'Ajukan Masjid'}
+            {submitting ? 'Mengirim Pengajuan...' : 'Kirim Pengajuan UPZ Sekolah'}
           </button>
-
-          <p className="text-xs text-center text-[#B0B0B0]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Dengan mengirimkan formulir ini, Anda menyetujui{' '}
-            <Link to="#" className="text-[#28A71A] hover:underline">Syarat & Ketentuan</Link> yang berlaku.
-          </p>
         </form>
       </div>
     </div>

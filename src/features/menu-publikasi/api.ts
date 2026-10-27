@@ -1,4 +1,4 @@
-import { adminApi, contentApi } from '../../services/api';
+import { adminApi } from '../../services/api';
 import type { PublikasiItem } from './types';
 
 const API_KEY = 'menara23apikey';

@@ -70,7 +70,7 @@ export default function DataPengurusPage() {
 
   const handleDelete = useCallback(
     (item: Pengurus) => {
-      if (confirm(`Apakah Anda yakin ingin menghapus ${item.nama} dari daftar pengurus?`)) {
+      if (confirm(`Apakah Anda yakin ingin menghapus ${item.nama} dari daftar pengurus UPZ Sekolah?`)) {
         if (item.id) deleteMutation.mutate(item.id);
       }
     },
@@ -110,7 +110,7 @@ export default function DataPengurusPage() {
       label: 'Nama',
       render: (item) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#EAF6E8] flex items-center justify-center text-[#28A71A] text-sm font-semibold flex-shrink-0">
+          <div className="w-9 h-9 rounded-full bg-[#F0F9FF] border border-[#BAE6FD] flex items-center justify-center text-[#0284C7] text-sm font-semibold flex-shrink-0">
             {item.nama?.charAt(0)?.toUpperCase() || '?'}
           </div>
           <div>
@@ -128,8 +128,8 @@ export default function DataPengurusPage() {
       key: 'jabatan',
       label: 'Jabatan',
       render: (item) => (
-        <span className="inline-flex items-center gap-1.5 text-sm text-[#303030] bg-[#F0F4F8] px-2.5 py-1 rounded-full" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          <Shield size={12} className="text-[#28A71A]" />
+        <span className="inline-flex items-center gap-1.5 text-sm text-[#0284C7] bg-[#F0F9FF] border border-[#BAE6FD] px-2.5 py-1 rounded-full font-medium" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <Shield size={12} className="text-[#0284C7]" />
           {item.jabatan || '-'}
         </span>
       ),
@@ -175,7 +175,7 @@ export default function DataPengurusPage() {
         <div className="flex items-center justify-end gap-2">
           <button
             onClick={() => handleEdit(item)}
-            className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F4F8] hover:text-[#28A71A] transition-colors"
+            className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F9FF] hover:text-[#0284C7] transition-colors"
             title="Edit"
           >
             <Pencil size={15} />
@@ -196,15 +196,15 @@ export default function DataPengurusPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <Users size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <Users size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h2 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Data Pengurus Masjid
+            Data Pengurus UPZ Sekolah
           </h2>
           <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Kelola data pengurus kepengurusan masjid
+            Kelola data struktur pengurus & pembina UPZ Sekolah
           </p>
         </div>
       </div>

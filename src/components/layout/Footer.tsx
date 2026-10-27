@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { GraduationCap } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,9 +9,9 @@ export default function Footer() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        padding: '40px 120px',
-        gap: 24,
-        background: '#000000',
+        padding: '48px 120px 40px',
+        gap: 28,
+        background: '#0F172A',
         maxWidth: 1440,
         margin: '0 auto',
       }}
@@ -22,7 +23,7 @@ export default function Footer() {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          gap: 24,
+          gap: 32,
           width: '100%',
           maxWidth: 1200,
           margin: '0 auto',
@@ -34,9 +35,9 @@ export default function Footer() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            gap: 11,
-            flex: 1,
-            maxWidth: 390,
+            gap: 14,
+            flex: 1.2,
+            maxWidth: 400,
           }}
         >
           {/* Logo + Name */}
@@ -50,30 +51,45 @@ export default function Footer() {
           >
             <div
               style={{
-                width: 30,
-                height: 30,
-                background: '#28A71A',
-                borderRadius: 8,
+                width: 36,
+                height: 36,
+                background: 'linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%)',
+                borderRadius: 10,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: '0 4px 12px rgba(2, 132, 199, 0.35)',
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
-              </svg>
+              <GraduationCap size={20} color="#FFFFFF" />
             </div>
-            <span
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 600,
-                fontSize: 16,
-                lineHeight: '24px',
-                color: '#FFFFFF',
-              }}
-            >
-              Menara Masjid
-            </span>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: 18,
+                  lineHeight: '24px',
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                UPZ Sekolah
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 600,
+                  fontSize: 10,
+                  lineHeight: '12px',
+                  color: '#38BDF8',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                BAZNAS RI
+              </span>
+            </div>
           </div>
 
           {/* Description */}
@@ -82,13 +98,13 @@ export default function Footer() {
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 400,
               fontSize: 14,
-              lineHeight: '20px',
-              color: '#FFFFFF',
+              lineHeight: '22px',
+              color: '#94A3B8',
               margin: 0,
-              maxWidth: 319,
+              maxWidth: 340,
             }}
           >
-            Platform digital untuk menghubungkan seluruh masjid dan musholla di Indonesia melalui teknologi modern.
+            Platform digital resmi pengelolaan Unit Pengumpul Zakat (UPZ) berbasis lingkungan sekolah di seluruh Indonesia binaan Badan Amil Zakat Nasional (BAZNAS).
           </p>
         </div>
 
@@ -98,37 +114,48 @@ export default function Footer() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            gap: 11,
+            gap: 12,
             flex: 1,
-            maxWidth: 320,
+            maxWidth: 280,
           }}
         >
           <span
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 600,
-              fontSize: 16,
+              fontSize: 15,
               lineHeight: '24px',
               color: '#FFFFFF',
             }}
           >
             Menu Navigasi
           </span>
-          {['Beranda', 'Tentang Kami', 'Masjid', 'Publikasi', 'Microfinance'].map((item, i) => (
+          {[
+            { label: 'Beranda', to: '/' },
+            { label: 'Tentang Kami', to: '/tentang' },
+            { label: 'Direktori UPZ Sekolah', to: '/masjid' },
+            { label: 'Publikasi & Kajian', to: '/kajian' },
+            { label: 'Ajukan UPZ Sekolah', to: '/ajukan-masjid' },
+            { label: 'Microfinance BMM', to: '/microfinance' },
+            { label: 'Founder', to: '/founder' },
+          ].map((item, i) => (
             <Link
               key={i}
-              to={i === 0 ? '/' : `/${item.toLowerCase().replace(/\s+/g, '-')}`}
+              to={item.to}
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 400,
                 fontSize: 14,
                 lineHeight: '20px',
-                color: '#FFFFFF',
+                color: '#CBD5E1',
                 textDecoration: 'none',
                 width: '100%',
+                transition: 'color 0.2s ease',
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </div>
@@ -139,9 +166,9 @@ export default function Footer() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            gap: 24,
-            flex: 1,
-            maxWidth: 390,
+            gap: 20,
+            flex: 1.2,
+            maxWidth: 380,
           }}
         >
           {/* Kontak */}
@@ -158,12 +185,12 @@ export default function Footer() {
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 600,
-                fontSize: 16,
+                fontSize: 15,
                 lineHeight: '24px',
                 color: '#FFFFFF',
               }}
             >
-              Kontak
+              Kontak Layanan
             </span>
 
             {/* Phone */}
@@ -172,11 +199,11 @@ export default function Footer() {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: 12,
+                gap: 10,
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#38BDF8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span
                 style={{
@@ -184,10 +211,10 @@ export default function Footer() {
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: '20px',
-                  color: '#FFFFFF',
+                  color: '#CBD5E1',
                 }}
               >
-                0811 8882 1818
+                0811 8882 1818 (Call Center BAZNAS)
               </span>
             </div>
 
@@ -197,12 +224,12 @@ export default function Footer() {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: 12,
+                gap: 10,
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" strokeWidth="1.5"/>
-                <polyline points="22,6 12,13 2,6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#38BDF8" strokeWidth="1.5"/>
+                <polyline points="22,6 12,13 2,6" stroke="#38BDF8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span
                 style={{
@@ -210,10 +237,10 @@ export default function Footer() {
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: '20px',
-                  color: '#FFFFFF',
+                  color: '#CBD5E1',
                 }}
               >
-                baznas@baznas.go.id
+                upzsekolah@baznas.go.id
               </span>
             </div>
 
@@ -223,13 +250,13 @@ export default function Footer() {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-                gap: 12,
+                gap: 10,
                 width: '100%',
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginTop: 2, flexShrink: 0 }}>
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="white" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" stroke="white" strokeWidth="1.5"/>
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#38BDF8" strokeWidth="1.5"/>
+                <circle cx="12" cy="10" r="3" stroke="#38BDF8" strokeWidth="1.5"/>
               </svg>
               <span
                 style={{
@@ -237,10 +264,10 @@ export default function Footer() {
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: '20px',
-                  color: '#FFFFFF',
+                  color: '#94A3B8',
                 }}
               >
-                Jl. Matraman Raya No.134, Kb. Manggis, Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta
+                Jl. Matraman Raya No.134, Kebon Manggis, Matraman, Jakarta Timur
               </span>
             </div>
           </div>
@@ -251,7 +278,7 @@ export default function Footer() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              gap: 11,
+              gap: 10,
               width: '100%',
             }}
           >
@@ -259,9 +286,11 @@ export default function Footer() {
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 600,
-                fontSize: 16,
-                lineHeight: '24px',
-                color: '#FFFFFF',
+                fontSize: 13,
+                lineHeight: '20px',
+                color: '#94A3B8',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
               }}
             >
               Media Sosial
@@ -271,7 +300,7 @@ export default function Footer() {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-                gap: 11,
+                gap: 10,
               }}
             >
               {/* YouTube */}
@@ -282,11 +311,14 @@ export default function Footer() {
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 6,
-                  width: 28,
-                  height: 28,
-                  background: 'rgba(255, 255, 255, 0.25)',
+                  width: 32,
+                  height: 32,
+                  background: 'rgba(255, 255, 255, 0.1)',
                   borderRadius: 99,
+                  transition: 'background 0.2s ease',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0284C7')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -301,11 +333,14 @@ export default function Footer() {
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 6,
-                  width: 28,
-                  height: 28,
-                  background: 'rgba(255, 255, 255, 0.25)',
+                  width: 32,
+                  height: 32,
+                  background: 'rgba(255, 255, 255, 0.1)',
                   borderRadius: 99,
+                  transition: 'background 0.2s ease',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0284C7')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" strokeWidth="1.5"/>
@@ -322,11 +357,14 @@ export default function Footer() {
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 6,
-                  width: 28,
-                  height: 28,
-                  background: 'rgba(255, 255, 255, 0.25)',
+                  width: 32,
+                  height: 32,
+                  background: 'rgba(255, 255, 255, 0.1)',
                   borderRadius: 99,
+                  transition: 'background 0.2s ease',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0284C7')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -344,7 +382,7 @@ export default function Footer() {
           maxWidth: 1200,
           margin: '0 auto',
           height: 0,
-          borderTop: '1px solid #D4D4D4',
+          borderTop: '1px solid #1E293B',
         }}
       />
 
@@ -353,11 +391,13 @@ export default function Footer() {
         style={{
           display: 'flex',
           flexDirection: 'row',
-          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           gap: 24,
           width: '100%',
           maxWidth: 1200,
           margin: '0 auto',
+          flexWrap: 'wrap',
         }}
       >
         <div
@@ -366,57 +406,79 @@ export default function Footer() {
             flexDirection: 'row',
             alignItems: 'center',
             gap: 24,
-            flex: 1,
           }}
         >
-          <span
+          <Link
+            to="/kebijakan-privasi"
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 400,
-              fontSize: 14,
+              fontSize: 13,
               lineHeight: '20px',
-              textAlign: 'center',
-              color: '#FFFFFF',
+              color: '#94A3B8',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}
           >
             Kebijakan Privasi
-          </span>
-          <span
+          </Link>
+          <Link
+            to="/disclaimer"
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 400,
-              fontSize: 14,
+              fontSize: 13,
               lineHeight: '20px',
-              textAlign: 'center',
-              color: '#FFFFFF',
+              color: '#94A3B8',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}
+          >
+            Disclaimer
+          </Link>
+          <Link
+            to="/syarat-ketentuan"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 400,
+              fontSize: 13,
+              lineHeight: '20px',
+              color: '#94A3B8',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}
           >
             Syarat & Ketentuan
-          </span>
+          </Link>
           <span
             style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 400,
-              fontSize: 14,
+              fontSize: 13,
               lineHeight: '20px',
-              textAlign: 'center',
-              color: '#FFFFFF',
+              color: '#94A3B8',
+              cursor: 'pointer',
             }}
           >
-            Panduan Pengguna
+            Panduan UPZ Sekolah
           </span>
         </div>
         <span
           style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 400,
-            fontSize: 14,
+            fontSize: 13,
             lineHeight: '20px',
-            textAlign: 'center',
-            color: '#FFFFFF',
+            color: '#64748B',
           }}
         >
-          &copy; 2024 Menara Masjid. Semua hak cipta dilindungi undang-undang.
+          &copy; 2026 UPZ Sekolah - BAZNAS. Seluruh hak cipta dilindungi undang-undang.
         </span>
       </div>
     </footer>

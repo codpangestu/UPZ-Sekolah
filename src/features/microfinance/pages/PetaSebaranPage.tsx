@@ -23,7 +23,7 @@ function makeParticipantIcon(active: boolean): L.DivIcon {
     html: `
       <div style="
         width: ${size}px; height: ${size}px;
-        background: linear-gradient(135deg, #28A71A, #1f8a13);
+        background: linear-gradient(135deg, #0284C7, #0369A1);
         border: 3px solid white;
         border-radius: 50%;
         display: flex;
@@ -90,7 +90,7 @@ export default function PetaSebaranPage() {
     <div className="space-y-6">
       <Link
         to="/microfinance"
-        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#28A71A] transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-[#555] hover:text-[#0284C7] transition-colors"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         <ArrowLeft size={16} />
@@ -98,8 +98,8 @@ export default function PetaSebaranPage() {
       </Link>
 
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <MapPin size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <MapPin size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h1 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -113,7 +113,7 @@ export default function PetaSebaranPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <Users size={14} className="text-[#28A71A]" /> Total Peserta
+            <Users size={14} className="text-[#0284C7]" /> Total Peserta
           </div>
           <p className="text-2xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {isLoading ? '...' : peserta.length}
@@ -121,7 +121,7 @@ export default function PetaSebaranPage() {
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <Navigation size={14} className="text-[#28A71A]" /> Dengan Koordinat
+            <Navigation size={14} className="text-[#0284C7]" /> Dengan Koordinat
           </div>
           <p className="text-2xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {isLoading ? '...' : withCoords.length}
@@ -129,7 +129,7 @@ export default function PetaSebaranPage() {
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <HandCoins size={14} className="text-[#28A71A]" /> Total Pinjaman
+            <HandCoins size={14} className="text-[#0284C7]" /> Total Pinjaman
           </div>
           <p className="text-xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {isLoading ? '...' : formatRupiah(totalPinjaman)}
@@ -137,7 +137,7 @@ export default function PetaSebaranPage() {
         </div>
         <div className="bg-white rounded-2xl border border-[rgba(0,0,0,0.1)] p-4">
           <div className="flex items-center gap-2 text-xs text-[#555] mb-2">
-            <Wallet size={14} className="text-[#28A71A]" /> Sisa Pengembalian
+            <Wallet size={14} className="text-[#0284C7]" /> Sisa Pengembalian
           </div>
           <p className="text-xl font-bold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             {isLoading ? '...' : formatRupiah(totalSisa)}
@@ -152,14 +152,14 @@ export default function PetaSebaranPage() {
             <div className="flex items-center gap-1 rounded-lg bg-[#F0F4F8] p-1">
               <button
                 onClick={() => setSource('usaha')}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${source === 'usaha' ? 'bg-[#28A71A] text-white' : 'text-[#555] hover:text-[#28A71A]'}`}
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${source === 'usaha' ? 'bg-[#0284C7] text-white' : 'text-[#555] hover:text-[#0284C7]'}`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Lokasi Usaha
               </button>
               <button
                 onClick={() => setSource('rumah')}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${source === 'rumah' ? 'bg-[#28A71A] text-white' : 'text-[#555] hover:text-[#28A71A]'}`}
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${source === 'rumah' ? 'bg-[#0284C7] text-white' : 'text-[#555] hover:text-[#0284C7]'}`}
                 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Lokasi Rumah
@@ -191,7 +191,7 @@ export default function PetaSebaranPage() {
                         {p.nama_usaha || 'Usaha tidak diisi'}
                       </div>
                       <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginBottom: '6px' }}>
-                        <span style={{ fontSize: '9px', padding: '1px 6px', background: '#E6F9F0', color: '#28A71A', borderRadius: '4px', fontWeight: 500 }}>
+                        <span style={{ fontSize: '9px', padding: '1px 6px', background: '#F0F9FF', color: '#0284C7', borderRadius: '4px', fontWeight: 500 }}>
                           Pinjaman {formatRupiah(p.jumlah_pinjaman)}
                         </span>
                         <span style={{ fontSize: '9px', padding: '1px 6px', background: '#FFF3E0', color: '#E65100', borderRadius: '4px', fontWeight: 500 }}>
@@ -212,7 +212,7 @@ export default function PetaSebaranPage() {
           </div>
           <div className="flex items-center gap-4 px-4 py-2.5 border-t border-[rgba(0,0,0,0.04)] bg-[#FAFAFA]">
             <div className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-[#28A71A] border-2 border-white shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-[#0284C7] border-2 border-white shadow-sm" />
               <span className="text-[10px] text-[#666]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Peserta BMM</span>
             </div>
             <span className="text-[10px] text-[#aaa] ml-auto" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -244,13 +244,13 @@ export default function PetaSebaranPage() {
                 <button
                   key={p.id_peserta_program_bmfi_asesmen}
                   onClick={() => setActiveId(p.id_peserta_program_bmfi_asesmen)}
-                  className={`w-full text-left px-4 py-3 transition-colors ${activeId === p.id_peserta_program_bmfi_asesmen ? 'bg-[#F0FDF0] ring-1 ring-inset ring-[#28A71A]/30' : 'hover:bg-[#FAFAFA]'}`}
+                  className={`w-full text-left px-4 py-3 transition-colors ${activeId === p.id_peserta_program_bmfi_asesmen ? 'bg-[#F0FDF0] ring-1 ring-inset ring-[#0284C7]/30' : 'hover:bg-[#FAFAFA]'}`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-sm font-medium text-[#303030] truncate" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                       {p.nama_peserta_program_bmfi_asesmen || '-'}
                     </span>
-                    <MapPin size={14} className="text-[#28A71A] shrink-0" />
+                    <MapPin size={14} className="text-[#0284C7] shrink-0" />
                   </div>
                   <div className="text-xs text-[#888] truncate mt-0.5">{p.nama_usaha || 'Usaha tidak diisi'}</div>
                   <div className="flex gap-2 mt-1.5">

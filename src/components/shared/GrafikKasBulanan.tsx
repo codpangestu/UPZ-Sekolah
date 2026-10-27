@@ -14,7 +14,7 @@ import { masjidService } from '../../services/masjidService';
 import type { RekapBulananItem } from '../../types';
 
 const BULAN_SINGKAT = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-const GREEN = '#28A71A';
+const GREEN = '#0284C7';
 const RED = '#EF4444';
 
 function labelPeriode(periode: string): string {
@@ -131,9 +131,9 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
       {/* Header: judul + toggle periode (FR-2.6) */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <BarChart3 size={18} className="text-[#28A71A]" />
+          <BarChart3 size={18} className="text-[#0284C7]" />
           <h2 className="text-sm font-semibold text-[#303030]">Penerimaan vs Pengeluaran</h2>
-          <span className="badge-xs inline-flex bg-[#EAF6E8] text-[#1C7712]">{periodeLabel}</span>
+          <span className="badge-xs inline-flex bg-[#E0F2FE] text-[#0369A1]">{periodeLabel}</span>
         </div>
         <div className="flex items-center gap-2">
           {(['rolling', 'custom'] as Mode[]).map((m) => (
@@ -143,8 +143,8 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
               onClick={() => setMode(m)}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 mode === m
-                  ? 'bg-[#28A71A] text-white'
-                  : 'bg-[#F1F5F9] text-[#555555] hover:bg-[#EAF6E8] hover:text-[#1C7712]'
+                  ? 'bg-[#0284C7] text-white'
+                  : 'bg-[#F1F5F9] text-[#555555] hover:bg-[#E0F2FE] hover:text-[#0369A1]'
               }`}
             >
               {m === 'rolling' ? '12 Bulan Terakhir' : 'Rentang Kustom'}
@@ -156,13 +156,13 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
       {/* Input rentang kustom */}
       {mode === 'custom' && (
         <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-[#555555]">
-          <CalendarRange size={14} className="text-[#28A71A]" />
+          <CalendarRange size={14} className="text-[#0284C7]" />
           <input
             type="date"
             value={customStart}
             max={customEnd || undefined}
             onChange={(e) => setCustomStart(e.target.value)}
-            className="rounded-lg border border-[rgba(0,0,0,0.1)] px-2 py-1.5 text-xs text-[#303030] outline-none focus:border-[#28A71A]"
+            className="rounded-lg border border-[rgba(0,0,0,0.1)] px-2 py-1.5 text-xs text-[#303030] outline-none focus:border-[#0284C7]"
             aria-label="Tanggal mulai"
           />
           <span>s/d</span>
@@ -171,7 +171,7 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
             value={customEnd}
             min={customStart || undefined}
             onChange={(e) => setCustomEnd(e.target.value)}
-            className="rounded-lg border border-[rgba(0,0,0,0.1)] px-2 py-1.5 text-xs text-[#303030] outline-none focus:border-[#28A71A]"
+            className="rounded-lg border border-[rgba(0,0,0,0.1)] px-2 py-1.5 text-xs text-[#303030] outline-none focus:border-[#0284C7]"
             aria-label="Tanggal akhir"
           />
         </div>
@@ -185,7 +185,7 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
             value: data?.total_penerimaan,
             icon: TrendingUp,
             iconColor: GREEN,
-            badge: 'bg-[#E6F9F0] text-[#006844]',
+            badge: 'bg-[#F0F9FF] text-[#006844]',
           },
           {
             label: 'Total Pengeluaran',
@@ -198,8 +198,8 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
             label: 'Saldo Akhir',
             value: data?.saldo,
             icon: Wallet,
-            iconColor: '#1C7712',
-            badge: 'bg-[#EAF6E8] text-[#1C7712]',
+            iconColor: '#0369A1',
+            badge: 'bg-[#E0F2FE] text-[#0369A1]',
           },
         ].map((card) => (
           <div key={card.label} className="rounded-xl bg-[#FAFBFC] p-3">
@@ -223,7 +223,7 @@ export default function GrafikKasBulanan({ idMasjid }: { idMasjid: string | unde
         </div>
       ) : isLoading ? (
         <div className="flex h-[260px] items-center justify-center gap-2 text-sm text-[#555555]">
-          <Loader2 size={18} className="animate-spin text-[#28A71A]" />
+          <Loader2 size={18} className="animate-spin text-[#0284C7]" />
           Memuat grafik...
         </div>
       ) : isError || !data ? (

@@ -210,14 +210,14 @@ export default function BukuKasPenerimaanPage() {
         <div className="flex items-center justify-end gap-2">
           <button
             onClick={() => handleCetak(item)}
-            className="p-1.5 rounded-lg text-text-gray hover:bg-[#EAF6E8] hover:text-[#28A71A] transition-colors"
+            className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F9FF] hover:text-[#0284C7] transition-colors"
             title="Cetak Kuitansi"
           >
             <Printer size={15} />
           </button>
           <button
             onClick={() => handleEdit(item)}
-            className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F4F8] hover:text-[#28A71A] transition-colors"
+            className="p-1.5 rounded-lg text-text-gray hover:bg-[#F0F9FF] hover:text-[#0284C7] transition-colors"
             title="Edit"
           >
             <Pencil size={15} />
@@ -238,22 +238,22 @@ export default function BukuKasPenerimaanPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#EAF6E8] rounded-xl flex items-center justify-center">
-          <Wallet size={20} className="text-[#28A71A]" />
+        <div className="w-10 h-10 bg-[#F0F9FF] rounded-xl flex items-center justify-center">
+          <Wallet size={20} className="text-[#0284C7]" />
         </div>
         <div>
           <h2 className="text-lg font-semibold text-[#303030]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Buku Kas Penerimaan
+            Buku Kas Penerimaan ZIS
           </h2>
           <p className="text-sm text-text-gray" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Kelola pencatatan penerimaan ZIS DSKL
+            Kelola pencatatan penerimaan Zakat, Infak, Sedekah & DSKL UPZ Sekolah
           </p>
         </div>
       </div>
 
       {/* Command Center / Ringkasan */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl p-5 text-white">
+        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl p-5 text-white shadow-xs">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-white/80" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Total Penerimaan</p>
             <TrendingUp size={18} className="text-white/70" />
@@ -262,7 +262,7 @@ export default function BukuKasPenerimaanPage() {
             {formatCurrency(cc?.total_nominal_masuk)}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-5 text-white">
+        <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-5 text-white shadow-xs">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-white/80" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Total Pengeluaran</p>
             <TrendingDown size={18} className="text-white/70" />
@@ -271,9 +271,9 @@ export default function BukuKasPenerimaanPage() {
             {formatCurrency(cc?.total_nominal_keluar)}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-[#28A71A] to-[#1C7712] rounded-xl p-5 text-white">
+        <div className="bg-gradient-to-br from-[#0284C7] to-[#0369A1] rounded-xl p-5 text-white shadow-xs">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-white/80" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Saldo Akhir</p>
+            <p className="text-sm text-white/80" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Saldo Kas UPZ</p>
             <DollarSign size={18} className="text-white/70" />
           </div>
           <p className="text-2xl font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>

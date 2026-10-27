@@ -132,7 +132,7 @@ export default function JadwalSholat() {
       <div className="relative px-6 pt-5 pb-4">
         {/* Back + Title Row */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-9 h-9 rounded-xl bg-[#28A71A]/10 flex items-center justify-center text-[#28A71A] cursor-pointer hover:bg-[#28A71A]/20 transition-colors">
+          <div className="w-9 h-9 rounded-xl bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] cursor-pointer hover:bg-[#0284C7]/20 transition-colors">
             <ArrowLeft size={18} />
           </div>
           <h2
@@ -151,7 +151,7 @@ export default function JadwalSholat() {
                 onClick={() =>
                   setCityIndex((i) => (i - 1 + CITY_DATA.length) % CITY_DATA.length)
                 }
-                className="w-6 h-6 rounded-full bg-[#28A71A]/10 flex items-center justify-center text-[#28A71A] hover:bg-[#28A71A]/20 transition-colors"
+                className="w-6 h-6 rounded-full bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] hover:bg-[#0284C7]/20 transition-colors"
               >
                 <ChevronLeft size={14} />
               </button>
@@ -165,7 +165,7 @@ export default function JadwalSholat() {
                 onClick={() =>
                   setCityIndex((i) => (i + 1) % CITY_DATA.length)
                 }
-                className="w-6 h-6 rounded-full bg-[#28A71A]/10 flex items-center justify-center text-[#28A71A] hover:bg-[#28A71A]/20 transition-colors"
+                className="w-6 h-6 rounded-full bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] hover:bg-[#0284C7]/20 transition-colors"
               >
                 <ChevronRight size={14} />
               </button>
@@ -181,9 +181,9 @@ export default function JadwalSholat() {
 
           {/* Live Clock */}
           <div className="flex items-center gap-1.5 bg-[#FAFAFA] px-3 py-1.5 rounded-lg">
-            <Clock size={12} className="text-[#28A71A]" />
+            <Clock size={12} className="text-[#0284C7]" />
             <span
-              className="text-xs font-semibold text-[#28A71A] tabular-nums"
+              className="text-xs font-semibold text-[#0284C7] tabular-nums"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               {formattedTime}
@@ -216,7 +216,7 @@ export default function JadwalSholat() {
               <div
                 className={`relative flex items-center justify-between py-3 px-4 rounded-2xl transition-all ${
                   isNext
-                    ? 'bg-gradient-to-r from-[#28A71A]/10 to-[#28A71A]/5 ring-1 ring-[#28A71A]/20'
+                    ? 'bg-gradient-to-r from-[#0284C7]/10 to-[#0284C7]/5 ring-1 ring-[#0284C7]/20'
                     : isPast
                     ? 'opacity-45'
                     : 'hover:bg-[#FAFAFA]'
@@ -228,13 +228,13 @@ export default function JadwalSholat() {
                   <div className="relative flex items-center justify-center">
                     {isNext ? (
                       <div className="relative">
-                        <div className="w-3 h-3 rounded-full bg-[#28A71A] animate-pulse" />
-                        <div className="absolute inset-0 w-3 h-3 rounded-full bg-[#28A71A]/30 animate-ping" />
+                        <div className="w-3 h-3 rounded-full bg-[#0284C7] animate-pulse" />
+                        <div className="absolute inset-0 w-3 h-3 rounded-full bg-[#0284C7]/30 animate-ping" />
                       </div>
                     ) : (
                       <div
                         className={`w-2.5 h-2.5 rounded-full ${
-                          isPast ? 'bg-[#ddd]' : 'bg-[#28A71A]/40'
+                          isPast ? 'bg-[#ddd]' : 'bg-[#0284C7]/40'
                         }`}
                       />
                     )}
@@ -242,11 +242,11 @@ export default function JadwalSholat() {
 
                   <prayer.icon
                     size={18}
-                    className={isNext ? 'text-[#28A71A]' : 'text-[#888]'}
+                    className={isNext ? 'text-[#0284C7]' : 'text-[#888]'}
                   />
                   <span
                     className={`text-sm font-medium ${
-                      isNext ? 'text-[#28A71A] font-bold' : 'text-[#555]'
+                      isNext ? 'text-[#0284C7] font-bold' : 'text-[#555]'
                     }`}
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
@@ -258,14 +258,14 @@ export default function JadwalSholat() {
                 <div className="flex items-center gap-2">
                   <span
                     className={`text-sm font-bold tabular-nums ${
-                      isNext ? 'text-[#28A71A]' : 'text-[#303030]'
+                      isNext ? 'text-[#0284C7]' : 'text-[#303030]'
                     }`}
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     {prayer.label}
                   </span>
                   {isNext && (
-                    <span className="text-[9px] font-bold text-white bg-[#28A71A] px-2 py-0.5 rounded-full uppercase tracking-wide">
+                    <span className="text-[9px] font-bold text-white bg-[#0284C7] px-2 py-0.5 rounded-full uppercase tracking-wide">
                       Sekarang
                     </span>
                   )}
@@ -288,7 +288,7 @@ export default function JadwalSholat() {
 
       {/* ===== GRADIENT FOOTER ===== */}
       <div className="relative mt-2 overflow-hidden">
-        <div className="bg-gradient-to-br from-[#28A71A] via-[#1f8a13] to-[#166b0d] px-6 py-6">
+        <div className="bg-gradient-to-br from-[#0284C7] via-[#0369A1] to-[#075985] px-6 py-6">
           {/* Decorative circles */}
           <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/5" />
           <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-white/5" />
